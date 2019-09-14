@@ -1,6 +1,7 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
 import TextFieldComponent from "../ElementsUI/TextFieldComponent";
+import SquareCheckboxComponent from "../ElementsUI/SquareCheckboxComponent";
 import { Row, Col } from "react-styled-flexboxgrid";
 import { Button, Typography } from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
@@ -45,6 +46,24 @@ const Introduction = () => {
                         component={TextFieldComponent}
                         label={"Nombre"}
                         name={"name"}
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs={12}>
+                      <Field
+                        component={SquareCheckboxComponent}
+                        label={"Acepto la Política de Protección de Datos Personales y los Términos y Condiciones."}
+                        name={"politics"}
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs={12}>
+                      <Field
+                        component={SquareCheckboxComponent}
+                        label={"Acepto la Política de Envío de Comunicaciones Comerciales."}
+                        name={"ads"}
                       />
                     </Col>
                   </Row>
