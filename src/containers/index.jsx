@@ -8,10 +8,10 @@ class Index extends React.Component {
     }
 }
 
-const mapStateToProps = (state /*, ownProps*/) => {
-    // return {
-    //   counter: state.counter
-    // }
+const mapStateToProps = (state ) => {
+    return {
+      state
+    }
   }
   
   const mapDispatchToProps = { 

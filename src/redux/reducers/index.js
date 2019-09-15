@@ -1,14 +1,6 @@
-import {
-    SET_NAME,
-  } from "../constants";
-  
-  export default (oldState = {}, action) => {
-    switch (action.type) {
-      case SET_NAME:
-        return {
-          ...oldState,
-        };
-      default:
-        return oldState;
-    }
-  };
+import {combineReducers} from 'redux'
+import {reducer as reducerForm} from 'redux-form'
+
+export default combineReducers({
+    form: reducerForm
+})

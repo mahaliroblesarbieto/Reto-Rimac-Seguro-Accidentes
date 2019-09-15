@@ -7,6 +7,14 @@ import { Button, Typography } from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
 import MobileWidth from "../MobileWidth";
 
+// const required = value => (value || typeof value === 'number' ? undefined : 'Required');
+// const maxLength15 = maxLength(15)
+const dniNumber = value =>
+  value && !/^(0|[1-9][0-9]{8})$/i.test(value)
+    ? 'Número de dni incorrecto, debe tener 9 dígitos'
+    : undefined;
+
+
 const Introduction = () => {  
     return (
       <React.Fragment>
@@ -37,6 +45,7 @@ const Introduction = () => {
                         component={TextFieldComponent}
                         label={"Nro. de Documento"}
                         name={"dni"}
+                        validate={dniNumber}
                       />
                     </Col>
                   </Row>
