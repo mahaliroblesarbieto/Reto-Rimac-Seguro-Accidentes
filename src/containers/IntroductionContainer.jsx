@@ -7,7 +7,9 @@ class IntroductionContainer extends React.Component {
         
         const { dni, name } = values;
         console.log(dni, name);
-        if(dni === undefined) {
+        if(dni === undefined && name === undefined){
+            throw new SubmissionError({ dni: "Este campo es requerido", name: "Este campo es requerido"  });
+        }else if(dni === undefined) {
             throw new SubmissionError({ dni: "Este campo es requerido" });
         } else if ( name === undefined) {
             throw new SubmissionError({ name: "Este campo es requerido" });
