@@ -7,6 +7,7 @@ import {
       case SET_NAME:
         return {
           ...oldState,
+          userName: action.payload
         };
       default:
         return oldState;

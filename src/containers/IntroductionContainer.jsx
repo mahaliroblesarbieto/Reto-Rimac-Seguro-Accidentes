@@ -13,12 +13,18 @@ class IntroductionContainer extends React.Component {
             throw new SubmissionError({ name: "Este campo es requerido" });
         } else {
             this.props.updateNameAndNumberDni(name, dni);
+            return values;
         }
       };
+      handleSuccessSubmitIntroduction = res => {
+          console.log(res.name);
+          this.props.setName(res.name);
+      }
     render() {
         return (
         <Introduction
         onSubmit={this.handleSubmitIntroduction}
+        onSubmitSuccess={this.handleSuccessSubmitIntroduction}
         />)
     }
 }

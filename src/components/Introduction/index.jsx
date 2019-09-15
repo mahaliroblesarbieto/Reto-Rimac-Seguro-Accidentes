@@ -8,7 +8,7 @@ import FormComponent from "../ElementsUI/FormComponent";
 import MobileWidth from "../MobileWidth";
 import { dniNumber, handleValidateDniNumber, handleValidateNameAndLastName} from "../../validations/field"
 
-const Introduction = ({handleSubmit}) => {  
+const Introduction = ({error, handleSubmit, pristine, reset, submitting}) => {  
     return (
       <React.Fragment>
         <Row center="xs">
