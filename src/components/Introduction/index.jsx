@@ -6,9 +6,9 @@ import { Row, Col } from "react-styled-flexboxgrid";
 import { Button, Typography } from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
 import MobileWidth from "../MobileWidth";
-import { dniNumber, handleValidateDniNumber, handleValidateNameAndLastName, required} from "../../validations/field"
+import { dniNumber, handleValidateDniNumber, handleValidateNameAndLastName} from "../../validations/field"
 
-const Introduction = () => {  
+const Introduction = ({handleSubmit}) => {  
     return (
       <React.Fragment>
         <Row center="xs">
@@ -31,7 +31,7 @@ const Introduction = () => {
             </Row>
             <Row>
               <Col xs={12}>
-                <FormComponent>
+                <FormComponent onSubmit={handleSubmit}>
                   <Row>
                     <Col xs={12}>
                       <Field
@@ -96,7 +96,7 @@ const Introduction = () => {
   
 export default reduxForm({
     form: "FormIntroduction",
-    initialValues: { politics: true, ads:true }
+    initialValues: { politics: true, ads:true },
     // validate: validateIntroduction,
   })(Introduction);
   
