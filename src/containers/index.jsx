@@ -16,6 +16,7 @@ class Index extends React.Component {
       step: 0,
       email: "",
       ensureYourself: "",
+      insuredUsers: [],
     };
   }
 
@@ -23,6 +24,11 @@ class Index extends React.Component {
     const newStep = this.state.step + 1;
     this.setState({ step: newStep });
   };
+
+  updateInsuredUsers = (newUser) => {
+    this.setState({insuredUsers: [...this.state.insuredUsers, newUser]}, () => console.log(this.state.insuredUsers)
+    )
+  }
 
   updateNameAndNumberDni = (newName, newNumberDni) => {
     this.setState(
@@ -66,6 +72,7 @@ class Index extends React.Component {
         name={this.state.name} 
         initialValues={{dni: this.state.numberDni}}
         updateNumberDniEmailAndEnsureYourself={this.updateNumberDniEmailAndEnsureYourself}
+        updateInsuredUsers={this.updateInsuredUsers}
         updateStep={this.updateStep}
         /> : ""}
         {this.state.step === 2 ? 

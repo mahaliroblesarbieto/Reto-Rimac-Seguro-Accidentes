@@ -39,6 +39,13 @@ const SecondStep = ({
               </Row>
               <Row>
                 <Col xs={12}>
+                  <Typography align="center" display="block">
+                    ASEGURADOS 
+                  </Typography>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12}>
                   <FormComponent onSubmit={handleSubmit}>
                     {ensureYourself === "yes" ? (
                       <Row>

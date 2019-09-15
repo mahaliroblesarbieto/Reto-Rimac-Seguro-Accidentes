@@ -23,6 +23,10 @@ class FirstStepContainer extends React.Component {
 
       handleSuccessSubmitFirstStep = res => {
           this.props.updateStep();
+          const data= { name: this.props.name, dni: res.dni }
+          if(res.ensureYourself === 'yes') {
+            this.props.updateInsuredUsers(data);
+          }
       }
 
     render() {
