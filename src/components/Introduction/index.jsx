@@ -6,7 +6,7 @@ import { Row, Col } from "react-styled-flexboxgrid";
 import { Button, Typography } from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
 import MobileWidth from "../MobileWidth";
-import { dniNumber, handleValidateDniNumber} from "../../validations/field"
+import { dniNumber, handleValidateDniNumber, handleValidateNameAndLastName} from "../../validations/field"
 
 // const required = value => (value || typeof value === 'number' ? undefined : 'Required');
 // const maxLength15 = maxLength(15)
@@ -57,6 +57,7 @@ const Introduction = () => {
                         component={TextFieldComponent}
                         label={"Nombre"}
                         name={"name"}
+                        normalize={handleValidateNameAndLastName}
                       />
                     </Col>
                   </Row>
