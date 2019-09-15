@@ -69,7 +69,10 @@ class Index extends React.Component {
         updateStep={this.updateStep}
         /> : ""}
         {this.state.step === 2 ? 
-        <SecondStepContainer 
+        <SecondStepContainer
+        ensureYourself={this.state.ensureYourself} 
+        name={this.state.name}
+        numberDni={this.state.numberDni}
         /> : ""}
       </>
     );

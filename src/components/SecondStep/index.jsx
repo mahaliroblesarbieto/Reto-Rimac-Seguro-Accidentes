@@ -11,10 +11,11 @@ const SecondStep = ({
   pristine,
   reset,
   submitting,
-  name,
-  numberDni,
   initialValues,
-  invalid
+  invalid,
+  ensureYourself,
+  name,
+  numberDni
 }) => {
   return (
     <React.Fragment>
@@ -39,6 +40,16 @@ const SecondStep = ({
               <Row>
                 <Col xs={12}>
                   <FormComponent onSubmit={handleSubmit}>
+                    {ensureYourself === "yes" ? (
+                      <Row>
+                        <Col xs={12}>
+                          <p>{name}</p>
+                          <p>{numberDni}</p>
+                        </Col>
+                      </Row>
+                    ) : (
+                      ""
+                    )}
                     <Link
                       type="button"
                       component="button"
