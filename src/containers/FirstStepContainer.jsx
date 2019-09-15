@@ -12,8 +12,22 @@ class FirstStepContainer extends React.Component {
       modifyDni = () => {
           this.setState({disabledTextfieldDni: false})
       }
+
+      handleSubmitFirstStepContainer = values => {
+        const { dni, email, ensureYourself } = values;
+        console.log('esta entrando a handleSubmit');
+        console.log(dni, email, ensureYourself);
+            this.props.updateNumberDniEmailAndEnsureYourself(dni, email, ensureYourself);
+            return values;
+        }
+
     render() {
-        return <FirstStep name={this.props.name} initialValues={this.props.initialValues} disabledTextfieldDni={this.state.disabledTextfieldDni} modifyDni={this.modifyDni}/>
+        return <FirstStep 
+        name={this.props.name} 
+        initialValues={this.props.initialValues} 
+        disabledTextfieldDni={this.state.disabledTextfieldDni} 
+        modifyDni={this.modifyDni}
+        onSubmit={this.handleSubmitFirstStepContainer}/>
     }
 }
 

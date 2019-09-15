@@ -12,7 +12,9 @@ class Index extends React.Component {
     this.state = {
       name: "",
       numberDni: "",
-      step: 0
+      step: 0,
+      email: "",
+      ensureYourself: "",
     };
   }
 
@@ -30,6 +32,15 @@ class Index extends React.Component {
       () => console.log(this.state.name, this.state.numberDni)
     );
   };
+
+  updateNumberDniEmailAndEnsureYourself = (newNumberDni, newEmail, newEnsureYourself) => {
+    this.setState({
+      numberDni: newNumberDni,
+      email: newEmail,
+      ensureYourself: newEnsureYourself,
+    }, () => console.log(this.state.numberDni, this.state.email, this.state.ensureYourself ));
+    console.log('esta actualizando datos');
+  }
 
   render() {
     return (
@@ -61,7 +72,12 @@ class Index extends React.Component {
           </Row>
         )} */}
 
-        {this.state.step === 1 ? <FirstStepContainer name={this.state.name} initialValues={{dni: this.state.numberDni}}/> : ""}
+        {this.state.step === 1 ? 
+        <FirstStepContainer 
+        name={this.state.name} 
+        initialValues={{dni: this.state.numberDni}}
+        updateNumberDniEmailAndEnsureYourself={this.updateNumberDniEmailAndEnsureYourself}
+        /> : ""}
       </>
     );
   }
