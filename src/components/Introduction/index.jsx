@@ -6,15 +6,7 @@ import { Row, Col } from "react-styled-flexboxgrid";
 import { Button, Typography } from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
 import MobileWidth from "../MobileWidth";
-import { dniNumber, handleValidateDniNumber, handleValidateNameAndLastName} from "../../validations/field"
-
-// const required = value => (value || typeof value === 'number' ? undefined : 'Required');
-// const maxLength15 = maxLength(15)
-// const dniNumber = value =>
-//   value && !/^(0|[1-9][0-9]{8})$/i.test(value)
-//     ? 'Número de dni incorrecto, debe tener 9 dígitos'
-//     : undefined;
-
+import { dniNumber, handleValidateDniNumber, handleValidateNameAndLastName, required} from "../../validations/field"
 
 const Introduction = () => {  
     return (
@@ -104,6 +96,7 @@ const Introduction = () => {
   
 export default reduxForm({
     form: "FormIntroduction",
+    initialValues: { politics: true, ads:true }
     // validate: validateIntroduction,
   })(Introduction);
   

@@ -20,3 +20,4 @@ export const handleValidateNameAndLastName = value => {
     return text.slice(0, 40);
   }
 };
+
