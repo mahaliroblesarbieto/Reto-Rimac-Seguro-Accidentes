@@ -4,13 +4,13 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-const RadioGroupComponent = ({ input, ...rest }) => (
+const RadioGroupGenderComponent = ({ input, ...rest }) => (
   <FormControl>
     <RadioGroup {...input} {...rest}>
-      <FormControlLabel value="no" control={<Radio />} label="No" />
-      <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+      <FormControlLabel value="male" control={<Radio />} label="Masculino" />
+      <FormControlLabel value="female" control={<Radio />} label="Femenino" />
     </RadioGroup>
   </FormControl>
 )
 
-export default RadioGroupComponent;
+export default RadioGroupGenderComponent;

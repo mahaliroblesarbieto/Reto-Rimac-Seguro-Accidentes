@@ -4,6 +4,7 @@ import { Row, Col } from "react-styled-flexboxgrid";
 import { Button, Typography, Link } from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
 import MobileWidth from "../MobileWidth";
+import UserData from "../UserData";
 
 const SecondStep = ({
   error,
@@ -16,7 +17,9 @@ const SecondStep = ({
   ensureYourself,
   name,
   numberDni,
-  insuredUsers
+  insuredUsers,
+  addUser,
+  showComponentUserData
 }) => {
   return (
     <React.Fragment>
@@ -45,54 +48,53 @@ const SecondStep = ({
                   </Typography>
                 </Col>
               </Row>
-              {insuredUsers.map((users, index) => {
-                return (
-                  <Row key={index}>
-                    <Col xs={8}>
-                      <Row><p>{users.name}</p></Row>
-                      <Row><p>{users.dni}</p></Row>
-                    </Col>
-                    <Col xs={4}>
-                    </Col>
-                  </Row>
-                );
-              })}
+              {addUser? <UserData/> : 
+              <Row>
+                <FormComponent onSubmit={handleSubmit}>
+              <Row>
+                {insuredUsers.map((users, index) => {
+                  return (
+                    <Row key={index}>
+                      <Col xs={8}>
+                        <Row>
+                          <p>{users.name}</p>
+                        </Row>
+                        <Row>
+                          <p>{users.dni}</p>
+                        </Row>
+                      </Col>
+                      <Col xs={4}></Col>
+                    </Row>
+                  );
+                })}
+              </Row>
+              <Row>
+                <Col>
+              <Link
+                type="button"
+                component="button"
+                variant="body2"
+                onClick={() => showComponentUserData()}
+              >
+                Quiero asegurar a alguien más
+              </Link>
+              </Col>
+              </Row>
               <Row>
                 <Col xs={12}>
-                  <FormComponent onSubmit={handleSubmit}>
-                    {ensureYourself === "yes" ? (
-                      <Row>
-                        <Col xs={12}>
-                          <p>{name}</p>
-                          <p>{numberDni}</p>
-                        </Col>
-                      </Row>
-                    ) : (
-                      ""
-                    )}
-                    <Link
-                      type="button"
-                      component="button"
-                      variant="body2"
-                      //   onClick={modifyDni}
-                    >
-                      Quiero asegurar a alguien más
-                    </Link>
-                    <Row>
-                      <Col xs={12}>
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          fullWidth
-                          type="submit"
-                        >
-                          CONTINUAR
-                        </Button>
-                      </Col>
-                    </Row>
-                  </FormComponent>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                    type="submit"
+                  >
+                    CONTINUAR
+                  </Button>
                 </Col>
               </Row>
+              </FormComponent>
+            </Row>
+            }
             </Col>
           </Row>
         </MobileWidth>
