@@ -3,14 +3,29 @@ import { reduxForm, Field } from "redux-form";
 import TextFieldComponent from "../ElementsUI/TextFieldComponent";
 import RadioGroupComponent from "../ElementsUI/RadioGroupComponent";
 import { Row, Col } from "react-styled-flexboxgrid";
-import { Button, Typography, Link} from "@material-ui/core";
+import { Button, Typography, Link } from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
 import MobileWidth from "../MobileWidth";
-import { dniNumber, handleValidateDniNumber, handleValidateNameAndLastName } from "../../validations/field";
+import {
+  dniNumber,
+  handleValidateDniNumber,
+} from "../../validations/field";
+import {handleValidateFirstStepForm} from "../../validations/form";
 
-
-const FirstStep = ({ error, handleSubmit, pristine, reset, submitting, name, numberDni, initialValues, disabledTextfieldDni, modifyDni }) => {
-  const substrName= name.substr(0, name.indexOf(' '));
+const FirstStep = ({
+  error,
+  handleSubmit,
+  pristine,
+  reset,
+  submitting,
+  name,
+  numberDni,
+  initialValues,
+  disabledTextfieldDni,
+  modifyDni,
+  invalid,
+}) => {
+  const substrName = name.substr(0, name.indexOf(" "));
   return (
     <React.Fragment>
       <Row center="xs">
@@ -21,14 +36,14 @@ const FirstStep = ({ error, handleSubmit, pristine, reset, submitting, name, num
                 <Col xs={12}>
                   <Typography align="center" variant="h5" display="block">
                     Hola {substrName}, cuéntanos sobre ti
-                </Typography>
+                  </Typography>
                 </Col>
               </Row>
               <Row>
                 <Col xs={12}>
                   <Typography align="center" display="block">
                     Puedes protegerlos por solo S/20 al mes por asegurado
-                </Typography>
+                  </Typography>
                 </Col>
               </Row>
               <Row>
@@ -37,7 +52,7 @@ const FirstStep = ({ error, handleSubmit, pristine, reset, submitting, name, num
                     <Row>
                       <Typography align="center" display="block">
                         Datos del titular
-                </Typography>
+                      </Typography>
                     </Row>
                     <Row>
                       <Col xs={12}>
@@ -57,7 +72,7 @@ const FirstStep = ({ error, handleSubmit, pristine, reset, submitting, name, num
                           component={TextFieldComponent}
                           label={"Correo"}
                           name={"email"}
-                        // normalize={handleValidateNameAndLastName}
+                          // normalize={handleValidateNameAndLastName}
                         />
                       </Col>
                     </Row>
@@ -68,8 +83,10 @@ const FirstStep = ({ error, handleSubmit, pristine, reset, submitting, name, num
                     </Row>
                     <Row>
                       <Col xs={12}>
-                        <Field name="ensureYourself" component={RadioGroupComponent}>
-                        </Field>
+                        <Field
+                          name="ensureYourself"
+                          component={RadioGroupComponent}
+                        ></Field>
                       </Col>
                     </Row>
                     <Row>
@@ -79,19 +96,20 @@ const FirstStep = ({ error, handleSubmit, pristine, reset, submitting, name, num
                           color="primary"
                           fullWidth
                           type="submit"
+                          disabled={submitting || invalid}
                         >
                           COMENCEMOS
-                      </Button>
+                        </Button>
                       </Col>
                     </Row>
                     <Link
-                              type="button"
-                              component="button"
-                              variant="body2"
-                              onClick={modifyDni}
-                            >
-                              Modificar DNI
-                            </Link>
+                      type="button"
+                      component="button"
+                      variant="body2"
+                      onClick={modifyDni}
+                    >
+                      Modificar DNI
+                    </Link>
                   </FormComponent>
                 </Col>
               </Row>
@@ -103,15 +121,8 @@ const FirstStep = ({ error, handleSubmit, pristine, reset, submitting, name, num
   );
 };
 
-// function mapStateToProps(state, ownProps) {
-//   return {
-//     initialValues: {
-//       dni: ownProps.numberDni
-//     }
-// }
-// };
-
 export default reduxForm({
   form: "FormFirstStep",
   enableReinitialize: true,
- })(FirstStep);
+  validate: handleValidateFirstStepForm,
+})(FirstStep);
