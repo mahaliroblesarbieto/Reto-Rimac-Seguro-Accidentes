@@ -80,6 +80,7 @@ class Index extends React.Component {
         ensureYourself={this.state.ensureYourself} 
         name={this.state.name}
         numberDni={this.state.numberDni}
+        insuredUsers={this.state.insuredUsers}
         /> : ""}
       </>
     );

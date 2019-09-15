@@ -15,7 +15,8 @@ const SecondStep = ({
   invalid,
   ensureYourself,
   name,
-  numberDni
+  numberDni,
+  insuredUsers,
 }) => {
   return (
     <React.Fragment>
@@ -40,7 +41,7 @@ const SecondStep = ({
               <Row>
                 <Col xs={12}>
                   <Typography align="center" display="block">
-                    ASEGURADOS 
+                    ASEGURADOS ({insuredUsers.length})
                   </Typography>
                 </Col>
               </Row>

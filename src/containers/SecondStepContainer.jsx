@@ -7,6 +7,7 @@ class SecondStepContainer extends React.Component {
         ensureYourself={this.props.ensureYourself}
         name={this.props.name}
         numberDni={this.props.numberDni}
+        insuredUsers={this.props.insuredUsers}
         />
     }
 }
