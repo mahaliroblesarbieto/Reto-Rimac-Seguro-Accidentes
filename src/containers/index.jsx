@@ -61,7 +61,7 @@ class Index extends React.Component {
           </Row>
         )} */}
 
-        {this.state.step === 1 ? <FirstStepContainer name={this.state.name}/> : ""}
+        {this.state.step === 1 ? <FirstStepContainer name={this.state.name} initialValues={{dni: this.state.numberDni}}/> : ""}
       </>
     );
   }

@@ -3,13 +3,13 @@ import { reduxForm, Field } from "redux-form";
 import TextFieldComponent from "../ElementsUI/TextFieldComponent";
 import RadioGroupComponent from "../ElementsUI/RadioGroupComponent";
 import { Row, Col } from "react-styled-flexboxgrid";
-import { Button, Typography} from "@material-ui/core";
+import { Button, Typography, Link} from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
 import MobileWidth from "../MobileWidth";
 import { dniNumber, handleValidateDniNumber, handleValidateNameAndLastName } from "../../validations/field";
 
 
-const FirstStep = ({ error, handleSubmit, pristine, reset, submitting, name }) => {
+const FirstStep = ({ error, handleSubmit, pristine, reset, submitting, name, numberDni, initialValues, disabledTextfieldDni, modifyDni }) => {
   const substrName= name.substr(0, name.indexOf(' '));
   return (
     <React.Fragment>
@@ -47,6 +47,7 @@ const FirstStep = ({ error, handleSubmit, pristine, reset, submitting, name }) =
                           name={"dni"}
                           validate={dniNumber}
                           normalize={handleValidateDniNumber}
+                          disabled={disabledTextfieldDni ? true : false}
                         />
                       </Col>
                     </Row>
@@ -83,6 +84,14 @@ const FirstStep = ({ error, handleSubmit, pristine, reset, submitting, name }) =
                       </Button>
                       </Col>
                     </Row>
+                    <Link
+                              type="button"
+                              component="button"
+                              variant="body2"
+                              onClick={modifyDni}
+                            >
+                              Modificar DNI
+                            </Link>
                   </FormComponent>
                 </Col>
               </Row>
@@ -94,8 +103,15 @@ const FirstStep = ({ error, handleSubmit, pristine, reset, submitting, name }) =
   );
 };
 
+// function mapStateToProps(state, ownProps) {
+//   return {
+//     initialValues: {
+//       dni: ownProps.numberDni
+//     }
+// }
+// };
+
 export default reduxForm({
   form: "FormFirstStep",
-  // initialValues: { politics: true, ads: true },
-  // validate: validateIntroduction,
-})(FirstStep);
+  enableReinitialize: true,
+ })(FirstStep);
