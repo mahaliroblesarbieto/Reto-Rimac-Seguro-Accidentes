@@ -17,8 +17,8 @@ class IntroductionContainer extends React.Component {
         }
       };
       handleSuccessSubmitIntroduction = res => {
-          console.log(res.name);
           this.props.setName(res.name);
+          this.props.updateStep();
       }
     render() {
         return (

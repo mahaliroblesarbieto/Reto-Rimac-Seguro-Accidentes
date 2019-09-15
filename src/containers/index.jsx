@@ -1,5 +1,6 @@
 import React from "react";
 import IntroductionContainer from "./IntroductionContainer";
+import FirstStepContainer from "./FirstStepContainer";
 import { connect } from "react-redux";
 import { setName } from "../redux/actions";
 
@@ -8,8 +9,14 @@ class Index extends React.Component {
     super();
     this.state = {
       name: "",
-      numberDni: ""
+      numberDni: "",
+      step: 0,
     };
+  }
+
+  updateStep = () => {
+      const newStep = this.state.step + 1;
+      this.setState({step: newStep});
   }
 
   updateNameAndNumberDni = (newName, newNumberDni) => {
@@ -24,10 +31,15 @@ class Index extends React.Component {
 
   render() {
     return (
-      <IntroductionContainer
+        <>
+        {this.state.step === 0 ? <IntroductionContainer
         updateNameAndNumberDni={this.updateNameAndNumberDni}
         setName={this.props.setName}
-      />
+        updateStep={this.updateStep}
+      /> : ''}
+      {this.state.step === 1 ? <FirstStepContainer/> :''}
+      
+      </>
     );
   }
 }
