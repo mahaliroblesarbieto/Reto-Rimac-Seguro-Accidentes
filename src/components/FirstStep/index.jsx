@@ -9,6 +9,7 @@ import MobileWidth from "../MobileWidth";
 import {
   dniNumber,
   handleValidateDniNumber,
+  handleValidateEmail,
 } from "../../validations/field";
 import {handleValidateFirstStepForm} from "../../validations/form";
 
@@ -73,6 +74,7 @@ const FirstStep = ({
                           label={"Correo"}
                           name={"email"}
                           // normalize={handleValidateNameAndLastName}
+                          validate={handleValidateEmail}
                         />
                       </Col>
                     </Row>
