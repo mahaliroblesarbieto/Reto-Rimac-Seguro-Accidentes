@@ -1,6 +1,7 @@
 import React from "react";
 import IntroductionContainer from "./IntroductionContainer";
 import FirstStepContainer from "./FirstStepContainer";
+import SecondStepContainer from "./SecondStepContainer";
 import { Row, Col } from "react-styled-flexboxgrid";
 import { connect } from "react-redux";
 import { setName } from "../redux/actions";
@@ -60,23 +61,15 @@ class Index extends React.Component {
             </Col>
           </Row>
         )}
-        {/* {this.state.step === 0 ? (
-          ""
-        ) : (
-          <Row>
-            <Col xs={12}>
-              <Typography align="center" variant="h5" display="block">
-                Paso {this.state.step} de 4
-              </Typography>
-            </Col>
-          </Row>
-        )} */}
-
         {this.state.step === 1 ? 
         <FirstStepContainer 
         name={this.state.name} 
         initialValues={{dni: this.state.numberDni}}
         updateNumberDniEmailAndEnsureYourself={this.updateNumberDniEmailAndEnsureYourself}
+        updateStep={this.updateStep}
+        /> : ""}
+        {this.state.step === 2 ? 
+        <SecondStepContainer 
         /> : ""}
       </>
     );

@@ -21,13 +21,19 @@ class FirstStepContainer extends React.Component {
             return values;
         }
 
+      handleSuccessSubmitFirstStep = res => {
+          this.props.updateStep();
+      }
+
     render() {
         return <FirstStep 
         name={this.props.name} 
         initialValues={this.props.initialValues} 
         disabledTextfieldDni={this.state.disabledTextfieldDni} 
         modifyDni={this.modifyDni}
-        onSubmit={this.handleSubmitFirstStepContainer}/>
+        onSubmit={this.handleSubmitFirstStepContainer}
+        onSubmitSuccess={this.handleSuccessSubmitFirstStep}
+        />
     }
 }
 
