@@ -16,7 +16,7 @@ const SecondStep = ({
   ensureYourself,
   name,
   numberDni,
-  insuredUsers,
+  insuredUsers
 }) => {
   return (
     <React.Fragment>
@@ -45,6 +45,18 @@ const SecondStep = ({
                   </Typography>
                 </Col>
               </Row>
+              {insuredUsers.map((users, index) => {
+                return (
+                  <Row key={index}>
+                    <Col xs={8}>
+                      <Row><p>{users.name}</p></Row>
+                      <Row><p>{users.dni}</p></Row>
+                    </Col>
+                    <Col xs={4}>
+                    </Col>
+                  </Row>
+                );
+              })}
               <Row>
                 <Col xs={12}>
                   <FormComponent onSubmit={handleSubmit}>
