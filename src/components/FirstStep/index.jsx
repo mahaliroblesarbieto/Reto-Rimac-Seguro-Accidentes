@@ -6,9 +6,11 @@ import { Row, Col } from "react-styled-flexboxgrid";
 import { Button, Typography} from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
 import MobileWidth from "../MobileWidth";
-import { dniNumber, handleValidateDniNumber, handleValidateNameAndLastName } from "../../validations/field"
+import { dniNumber, handleValidateDniNumber, handleValidateNameAndLastName } from "../../validations/field";
 
-const FirstStep = ({ error, handleSubmit, pristine, reset, submitting }) => {
+
+const FirstStep = ({ error, handleSubmit, pristine, reset, submitting, name }) => {
+  const substrName= name.substr(0, name.indexOf(' '));
   return (
     <React.Fragment>
       <Row center="xs">
@@ -18,7 +20,7 @@ const FirstStep = ({ error, handleSubmit, pristine, reset, submitting }) => {
               <Row>
                 <Col xs={12}>
                   <Typography align="center" variant="h5" display="block">
-                    Hola, cuéntanos sobre ti
+                    Hola {substrName}, cuéntanos sobre ti
                 </Typography>
                 </Col>
               </Row>
