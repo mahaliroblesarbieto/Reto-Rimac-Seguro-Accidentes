@@ -40,6 +40,12 @@ class SecondStepContainer extends React.Component {
             addUser: true,
           })
       }
+
+      showList = () => {
+        this.setState({
+          addUser: false,
+        })
+      }
     render() {
         return <SecondStep 
         ensureYourself={this.props.ensureYourself}
@@ -53,6 +59,7 @@ class SecondStepContainer extends React.Component {
         handleDeleteUser={this.props.handleDeleteUser}
         handleUpdateUser={this.handleUpdateUser}
         initialValues={this.state.initialValues}
+        showList={this.showList}
         />
     }
 }

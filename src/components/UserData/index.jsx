@@ -20,7 +20,8 @@ const UserData = ({
   initialValues,
   disabledTextfieldDni,
   modifyDni,
-  invalid
+  invalid,
+  showList
 }) => {
   return (
     <React.Fragment>
@@ -113,7 +114,7 @@ const UserData = ({
                     type="button"
                     component="button"
                     variant="body2"
-                    onClick={modifyDni}
+                    onClick={showList}
                   >
                     Cancelar
                   </Link>

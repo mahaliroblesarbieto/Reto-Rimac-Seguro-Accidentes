@@ -23,7 +23,8 @@ const SecondStep = ({
   onSubmit,
   onSubmitSuccess,
   handleDeleteUser,
-  handleUpdateUser
+  handleUpdateUser,
+  showList
 }) => {
   return (
     <React.Fragment>
@@ -57,6 +58,7 @@ const SecondStep = ({
                   onSubmit={onSubmit}
                   onSubmitSuccess={onSubmitSuccess}
                   initialValues={initialValues}
+                  showList={showList}
                 />
               ) : (
                 <Row>
