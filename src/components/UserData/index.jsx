@@ -129,6 +129,6 @@ const UserData = ({
 
 export default reduxForm({
   form: "FormUserData",
-  //   enableReinitialize: true,
+    enableReinitialize: true,
     validate: handleValidateUserDataForm,
 })(UserData);

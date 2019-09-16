@@ -6,7 +6,16 @@ class SecondStepContainer extends React.Component {
         super();
         this.state = {
           addUser: false,
+          initialValues: '',
         };
+      }
+
+      handleUpdateUser = (index) => {
+        const dataUser = this.props.insuredUsers[index];
+        this.setState({
+          addUser: true,
+          initialValues: dataUser,
+        });
       }
 
       handleSubmitUserDataForm = values => {
@@ -42,7 +51,8 @@ class SecondStepContainer extends React.Component {
         onSubmit={this.handleSubmitUserDataForm}
         onSubmitSuccess={this.handleSubmitSuccessUserDataForm}
         handleDeleteUser={this.props.handleDeleteUser}
-
+        handleUpdateUser={this.handleUpdateUser}
+        initialValues={this.state.initialValues}
         />
     }
 }
