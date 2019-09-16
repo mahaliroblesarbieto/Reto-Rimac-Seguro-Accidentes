@@ -6,8 +6,8 @@ import RadioGroupGenderComponent from "../ElementsUI/RadioGroupGenderComponent";
 import { Row, Col } from "react-styled-flexboxgrid";
 import { Button, Typography, Link } from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
-import { dniNumber, handleValidateDniNumber } from "../../validations/field";
-// import {handleValidateFirstStepForm} from "../../validations/form";
+// import { dniNumber, handleValidateDniNumber } from "../../validations/field";
+import {handleValidateUserDataForm} from "../../validations/form";
 
 const UserData = ({
   error,
@@ -43,8 +43,8 @@ const UserData = ({
                         component={TextFieldComponent}
                         label={"Nro. de Documento"}
                         name={"dni"}
-                        validate={dniNumber}
-                        normalize={handleValidateDniNumber}
+                        // validate={dniNumber}
+                        // normalize={handleValidateDniNumber}
                       />
                     </Col>
                   </Row>
@@ -78,6 +78,7 @@ const UserData = ({
                       <Col xs={12}>
                       <Field
                         component={DatePickerComponent}
+                        name={"birthday"}
                       />
                       </Col>
                     </Row>
@@ -127,7 +128,7 @@ const UserData = ({
 };
 
 export default reduxForm({
-  form: "FormUserData"
+  form: "FormUserData",
   //   enableReinitialize: true,
-  //   validate: handleValidateFirstStepForm,
+    validate: handleValidateUserDataForm,
 })(UserData);
