@@ -19,7 +19,9 @@ const SecondStep = ({
   numberDni,
   insuredUsers,
   addUser,
-  showComponentUserData
+  showComponentUserData,
+  onSubmit,
+  onSubmitSuccess,
 }) => {
   return (
     <React.Fragment>
@@ -48,9 +50,9 @@ const SecondStep = ({
                   </Typography>
                 </Col>
               </Row>
-              {addUser? <UserData/> : 
+              {addUser? <UserData onSubmit={onSubmit} onSubmitSuccess={onSubmitSuccess}/> : 
               <Row>
-                <FormComponent onSubmit={handleSubmit}>
+                <FormComponent >
               <Row>
                 {insuredUsers.map((users, index) => {
                   return (
