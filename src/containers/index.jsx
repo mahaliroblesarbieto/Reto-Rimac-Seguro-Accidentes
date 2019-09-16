@@ -20,6 +20,10 @@ class Index extends React.Component {
     };
   }
 
+  // componentDidUpdate() {
+  //   this.handleDeleteUser();
+  // }
+
   updateStep = () => {
     const newStep = this.state.step + 1;
     this.setState({ step: newStep });
@@ -28,6 +32,11 @@ class Index extends React.Component {
   updateInsuredUsers = (newUser) => {
     this.setState({insuredUsers: [...this.state.insuredUsers, newUser]}, () => console.log(this.state.insuredUsers)
     )
+  }
+
+  handleDeleteUser = (dniUser) => {
+    const newArrayInjuredUsersDelete = this.state.insuredUsers.filter(item => item.dni !== dniUser);
+    this.setState({ insuredUsers: newArrayInjuredUsersDelete});
   }
 
   updateNameAndNumberDni = (newName, newNumberDni) => {
@@ -82,6 +91,7 @@ class Index extends React.Component {
         numberDni={this.state.numberDni}
         insuredUsers={this.state.insuredUsers}
         updateInsuredUsers={this.updateInsuredUsers}
+        handleDeleteUser={this.handleDeleteUser}
         /> : ""}
       </>
     );

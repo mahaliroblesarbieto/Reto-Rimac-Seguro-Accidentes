@@ -22,6 +22,7 @@ const SecondStep = ({
   showComponentUserData,
   onSubmit,
   onSubmitSuccess,
+  handleDeleteUser,
 }) => {
   return (
     <React.Fragment>
@@ -65,7 +66,9 @@ const SecondStep = ({
                           <p>{users.dni}</p>
                         </Row>
                       </Col>
-                      <Col xs={4}></Col>
+                      <Col xs={4}>
+                        <Button onClick={() => handleDeleteUser(users.dni)}>Eliminar</Button>
+                      </Col>
                     </Row>
                   );
                 })}

@@ -41,6 +41,7 @@ class SecondStepContainer extends React.Component {
         showComponentUserData={this.showComponentUserData}
         onSubmit={this.handleSubmitUserDataForm}
         onSubmitSuccess={this.handleSubmitSuccessUserDataForm}
+        handleDeleteUser={this.props.handleDeleteUser}
 
         />
     }
