@@ -105,7 +105,7 @@ const UserData = ({
                         type="submit"
                         disabled={submitting || invalid}
                       >
-                        COMENCEMOS
+                        {initialValues !== '' ? 'GUARDAR EDICIÓN' : 'GUARDAR' }
                       </Button>
                     </Col>
                   </Row>
