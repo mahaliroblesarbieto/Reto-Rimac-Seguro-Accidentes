@@ -30,7 +30,13 @@ const ThirdStep = ({
   totalAmount,
   handleChange,
   handleChangeDiscountCode,
-  handleApplyDiscount
+  handleApplyDiscount,
+  applyDiscount,
+  discount,
+  showList,
+  hideListUser,
+  showListUser,
+  insuredUsers
 }) => {
   return (
     <React.Fragment>
@@ -74,16 +80,48 @@ const ThirdStep = ({
                     <Row>
                       <Col xs={10}>
                         <Typography align="center" display="block">
-                          Por 2 asegurados DETALLE
-                  </Typography>
+                          Por 2 asegurados
+                          {showList ? <Link
+                            type="button"
+                            component="button"
+                            variant="body2"
+                            onClick={() => hideListUser()}
+                          >
+                            OCULTAR
+                        </Link> : <Link
+                              type="button"
+                              component="button"
+                              variant="body2"
+                              onClick={() => showListUser()}
+                            >
+                              DETALLE
+                        </Link>}
+                        </Typography>
                       </Col>
                       <Col xs={2}>
                         {totalAmount}
                       </Col>
                     </Row>
+                    {showList ? 
+                    <Row> 
+                    {insuredUsers.map((users, index) => {
+                        return (
+                          <Row key={index}>
+                            <Col xs={8}>
+                              <Row>
+                                <p>{users.name}</p>
+                              </Row>
+                              <Row>
+                                <p>{users.dni}</p>
+                              </Row>
+                            </Col>
+                          </Row>
+                        );
+                      })}
+                      </Row> : ''}
                     <Row>
                       <Col xs={12}>
-                        <Input
+                        {applyDiscount ? `¡Genial! tienes ${discount} % de dscto extra.` : (<Input
                           id="descuento"
                           type='text'
                           // value={discountcode}
@@ -99,6 +137,7 @@ const ThirdStep = ({
                             </InputAdornment>
                           }
                         />
+                        )}
                       </Col>
                     </Row>
                     {/* <Row>

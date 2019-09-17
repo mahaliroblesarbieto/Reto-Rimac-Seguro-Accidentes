@@ -7,7 +7,21 @@ class ThirdStepContainer extends React.Component {
         this.state = {
           totalAmount: "",
           discount: "",
+          applyDiscount: false,
+          showList: false,
         };
+      }
+
+      hideListUser = () => {
+          this.setState({
+            showList: false,
+          })
+      }
+
+      showListUser = () => {
+        this.setState({
+            showList: true,
+          })
       }
 
       handleChange = (event) => {
@@ -22,11 +36,10 @@ class ThirdStepContainer extends React.Component {
 
       handleApplyDiscount = () => {
         const newAmountDiscount = this.state.totalAmount - (this.state.totalAmount * parseInt(this.state.discount) / 100);
-        console.log(newAmountDiscount);
-        console.log(typeof this.state.totalAmount);
-        console.log(typeof this.state.discount);
-        
-        this.setState({totalAmount: newAmountDiscount})
+        this.setState({
+            totalAmount: newAmountDiscount,
+            applyDiscount: true,
+        })
       }
 
     render() {
@@ -35,6 +48,12 @@ class ThirdStepContainer extends React.Component {
         handleChange={this.handleChange}
         handleChangeDiscountCode={this.handleChangeDiscountCode}
         handleApplyDiscount={this.handleApplyDiscount}
+        applyDiscount={this.state.applyDiscount}
+        discount={this.state.discount}
+        showList={this.state.showList}
+        hideListUser={this.hideListUser}
+        showListUser={this.showListUser}
+        insuredUsers={this.props.insuredUsers}
         />
     }
 }
