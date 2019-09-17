@@ -2,7 +2,9 @@ import React from "react";
 import IntroductionContainer from "./IntroductionContainer";
 import FirstStepContainer from "./FirstStepContainer";
 import SecondStepContainer from "./SecondStepContainer";
+import ThirdStepContainer from "./ThirdStepContainer";
 import { Row, Col } from "react-styled-flexboxgrid";
+import FourthStep from "../components/FourthStep";
 import { connect } from "react-redux";
 import { setName } from "../redux/actions";
 import { Typography } from "@material-ui/core";
@@ -34,6 +36,12 @@ class Index extends React.Component {
     )
   }
 
+  updateUserData = (newDataUser, index) => {
+    let newInsuredUser = [...this.state.insuredUsers];
+    newInsuredUser[index] = newDataUser;
+    this.setState({insuredUsers: newInsuredUser})
+  }
+
   handleDeleteUser = (dniUser) => {
     const newArrayInjuredUsersDelete = this.state.insuredUsers.filter(item => item.dni !== dniUser);
     this.setState({ insuredUsers: newArrayInjuredUsersDelete});
@@ -56,6 +64,10 @@ class Index extends React.Component {
       ensureYourself: newEnsureYourself,
     }, () => console.log(this.state.numberDni, this.state.email, this.state.ensureYourself ));
     console.log('esta actualizando datos');
+  }
+
+  restart = () => {
+    this.setState({step: 0})
   }
 
   render() {
@@ -91,7 +103,18 @@ class Index extends React.Component {
         numberDni={this.state.numberDni}
         insuredUsers={this.state.insuredUsers}
         updateInsuredUsers={this.updateInsuredUsers}
+        updateUserData={this.updateUserData}
         handleDeleteUser={this.handleDeleteUser}
+        updateStep={this.updateStep}
+        /> : ""}
+        {this.state.step === 3 ? 
+        <ThirdStepContainer
+        insuredUsers={this.state.insuredUsers}
+        updateStep={this.updateStep}
+        /> : ""}
+        {this.state.step === 4 ? 
+        <FourthStep
+        restart = {this.restart}
         /> : ""}
       </>
     );

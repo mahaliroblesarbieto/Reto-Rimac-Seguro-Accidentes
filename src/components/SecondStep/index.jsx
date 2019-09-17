@@ -23,6 +23,9 @@ const SecondStep = ({
   onSubmit,
   onSubmitSuccess,
   handleDeleteUser,
+  handleUpdateUser,
+  showList,
+  showStepThree
 }) => {
   return (
     <React.Fragment>
@@ -51,55 +54,70 @@ const SecondStep = ({
                   </Typography>
                 </Col>
               </Row>
-              {addUser? <UserData onSubmit={onSubmit} onSubmitSuccess={onSubmitSuccess}/> : 
-              <Row>
-                <FormComponent >
-              <Row>
-                {insuredUsers.map((users, index) => {
-                  return (
-                    <Row key={index}>
-                      <Col xs={8}>
-                        <Row>
-                          <p>{users.name}</p>
-                        </Row>
-                        <Row>
-                          <p>{users.dni}</p>
-                        </Row>
-                      </Col>
-                      <Col xs={4}>
-                        <Button onClick={() => handleDeleteUser(users.dni)}>Eliminar</Button>
+              {addUser ? (
+                <UserData
+                  onSubmit={onSubmit}
+                  onSubmitSuccess={onSubmitSuccess}
+                  initialValues={initialValues}
+                  showList={showList}
+                />
+              ) : (
+                <Row>
+                  <FormComponent>
+                    <Row>
+                      {insuredUsers.map((users, index) => {
+                        return (
+                          <Row key={index}>
+                            <Col xs={8}>
+                              <Row>
+                                <p>{users.name}</p>
+                              </Row>
+                              <Row>
+                                <p>{users.dni}</p>
+                              </Row>
+                            </Col>
+                            <Col xs={4}>
+                              <Button
+                                onClick={() => handleDeleteUser(users.dni)}
+                              >
+                                Eliminar
+                              </Button>
+                              <Button onClick={() => handleUpdateUser(index)}>
+                                Editar
+                              </Button>
+                            </Col>
+                          </Row>
+                        );
+                      })}
+                    </Row>
+                    <Row>
+                      <Col>
+                        <Link
+                          type="button"
+                          component="button"
+                          variant="body2"
+                          onClick={() => showComponentUserData()}
+                        >
+                          Quiero asegurar a alguien más
+                        </Link>
                       </Col>
                     </Row>
-                  );
-                })}
-              </Row>
-              <Row>
-                <Col>
-              <Link
-                type="button"
-                component="button"
-                variant="body2"
-                onClick={() => showComponentUserData()}
-              >
-                Quiero asegurar a alguien más
-              </Link>
-              </Col>
-              </Row>
-              <Row>
-                <Col xs={12}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    fullWidth
-                    type="submit"
-                  >
-                    CONTINUAR
-                  </Button>
-                </Col>
-              </Row>
-              </FormComponent>
-            </Row>
-            }
+                    <Row>
+                      <Col xs={12}>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          fullWidth
+                          type="button"
+                          onClick={() => showStepThree()}
+                        >
+                          CONTINUAR
+                        </Button>
+                      </Col>
+                    </Row>
+                  </FormComponent>
+                </Row>
+              )}
             </Col>
           </Row>
         </MobileWidth>
@@ -108,8 +126,4 @@ const SecondStep = ({
   );
 };
 
-export default reduxForm({
-  form: "FormSecondStep"
-  //   enableReinitialize: true,
-  //   validate: handleValidateSecondStepForm,
-})(SecondStep);
+export default SecondStep;

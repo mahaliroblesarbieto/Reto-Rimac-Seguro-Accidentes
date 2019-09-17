@@ -6,13 +6,33 @@ class SecondStepContainer extends React.Component {
         super();
         this.state = {
           addUser: false,
+          initialValues: '',
+          indexUser: ''
         };
+      }
+
+      showStepThree= () => {
+        this.props.updateStep();
+
+      }
+
+      handleUpdateUser = (index) => {
+        const dataUser = this.props.insuredUsers[index];
+        this.setState({
+          addUser: true,
+          initialValues: dataUser,
+          indexUser: index
+        });
       }
 
       handleSubmitUserDataForm = values => {
         console.log(values);
         const data= { name: values.name, dni: values.dni, lastName: values.lastName, secondLastName: values.secondLastName, birthday: values.birthday, gender: values.gender }
-            this.props.updateInsuredUsers(data);
+        if(this.state.initialValues === '') {    
+        this.props.updateInsuredUsers(data)
+        } else {
+          this.props.updateUserData(data, this.state.indexUser)
+        }
             return values;
         }
 
@@ -31,6 +51,12 @@ class SecondStepContainer extends React.Component {
             addUser: true,
           })
       }
+
+      showList = () => {
+        this.setState({
+          addUser: false,
+        })
+      }
     render() {
         return <SecondStep 
         ensureYourself={this.props.ensureYourself}
@@ -42,7 +68,10 @@ class SecondStepContainer extends React.Component {
         onSubmit={this.handleSubmitUserDataForm}
         onSubmitSuccess={this.handleSubmitSuccessUserDataForm}
         handleDeleteUser={this.props.handleDeleteUser}
-
+        handleUpdateUser={this.handleUpdateUser}
+        initialValues={this.state.initialValues}
+        showList={this.showList}
+        showStepThree={this.showStepThree}
         />
     }
 }

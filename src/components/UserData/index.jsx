@@ -20,7 +20,8 @@ const UserData = ({
   initialValues,
   disabledTextfieldDni,
   modifyDni,
-  invalid
+  invalid,
+  showList
 }) => {
   return (
     <React.Fragment>
@@ -105,7 +106,7 @@ const UserData = ({
                         type="submit"
                         disabled={submitting || invalid}
                       >
-                        COMENCEMOS
+                        {initialValues !== '' ? 'GUARDAR EDICIÓN' : 'GUARDAR' }
                       </Button>
                     </Col>
                   </Row>
@@ -113,7 +114,7 @@ const UserData = ({
                     type="button"
                     component="button"
                     variant="body2"
-                    onClick={modifyDni}
+                    onClick={showList}
                   >
                     Cancelar
                   </Link>
@@ -129,6 +130,6 @@ const UserData = ({
 
 export default reduxForm({
   form: "FormUserData",
-  //   enableReinitialize: true,
+    enableReinitialize: true,
     validate: handleValidateUserDataForm,
 })(UserData);
