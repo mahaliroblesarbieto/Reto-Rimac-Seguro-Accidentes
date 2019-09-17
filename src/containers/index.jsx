@@ -9,6 +9,8 @@ import { connect } from "react-redux";
 import { setName } from "../redux/actions";
 import { Typography } from "@material-ui/core";
 
+// probando que hace commit con mi nombre
+
 class Index extends React.Component {
   constructor() {
     super();
