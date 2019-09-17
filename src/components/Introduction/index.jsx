@@ -2,6 +2,7 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 import TextFieldComponent from "../ElementsUI/TextFieldComponent";
 import SquareCheckboxComponent from "../ElementsUI/SquareCheckboxComponent";
+import ButtonComponent from "../ElementsUI/ButtonComponent";
 import { Row, Col } from "react-styled-flexboxgrid";
 import { Button, Typography } from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
@@ -73,14 +74,11 @@ const Introduction = ({error, handleSubmit, pristine, reset, submitting}) => {
                   </Row>
                   <Row>
                     <Col xs={12}>
-                      <Button
-                        variant="contained"
-                        color="primary"
+                      <ButtonComponent
                         fullWidth
-                        type="submit"
-                      >
-                        COMENCEMOS
-                      </Button>
+                        type={"submit"}
+                        content = {"COMENCEMOS"}
+                      /> 
                     </Col>
                   </Row>
                 </FormComponent>
