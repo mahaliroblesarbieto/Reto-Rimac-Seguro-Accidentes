@@ -42,6 +42,10 @@ class ThirdStepContainer extends React.Component {
         })
       }
 
+      handleSubmitThirdStep = () => {
+          this.props.updateStep()
+      }
+
     render() {
         return <ThirdStep 
         totalAmount={this.state.totalAmount}
@@ -54,6 +58,7 @@ class ThirdStepContainer extends React.Component {
         hideListUser={this.hideListUser}
         showListUser={this.showListUser}
         insuredUsers={this.props.insuredUsers}
+        handleSubmit = {this.handleSubmitThirdStep}
         />
     }
 }

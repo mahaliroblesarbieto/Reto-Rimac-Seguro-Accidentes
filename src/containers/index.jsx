@@ -4,6 +4,7 @@ import FirstStepContainer from "./FirstStepContainer";
 import SecondStepContainer from "./SecondStepContainer";
 import ThirdStepContainer from "./ThirdStepContainer";
 import { Row, Col } from "react-styled-flexboxgrid";
+import FourthStep from "../components/FourthStep";
 import { connect } from "react-redux";
 import { setName } from "../redux/actions";
 import { Typography } from "@material-ui/core";
@@ -65,6 +66,10 @@ class Index extends React.Component {
     console.log('esta actualizando datos');
   }
 
+  restart = () => {
+    this.setState({step: 0})
+  }
+
   render() {
     return (
       <>
@@ -105,6 +110,11 @@ class Index extends React.Component {
         {this.state.step === 3 ? 
         <ThirdStepContainer
         insuredUsers={this.state.insuredUsers}
+        updateStep={this.updateStep}
+        /> : ""}
+        {this.state.step === 4 ? 
+        <FourthStep
+        restart = {this.restart}
         /> : ""}
       </>
     );

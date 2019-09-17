@@ -8,6 +8,7 @@ import Input from '@material-ui/core/Input';
 import FormComponent from "../ElementsUI/FormComponent";
 import MobileWidth from "../MobileWidth";
 import InputAdornment from '@material-ui/core/InputAdornment';
+import SquareCheckboxComponent from "../ElementsUI/SquareCheckboxComponent";
 import {
   dniNumber,
   handleValidateDniNumber,
@@ -102,22 +103,22 @@ const ThirdStep = ({
                         {totalAmount}
                       </Col>
                     </Row>
-                    {showList ? 
-                    <Row> 
-                    {insuredUsers.map((users, index) => {
-                        return (
-                          <Row key={index}>
-                            <Col xs={8}>
-                              <Row>
-                                <p>{users.name}</p>
-                              </Row>
-                              <Row>
-                                <p>{users.dni}</p>
-                              </Row>
-                            </Col>
-                          </Row>
-                        );
-                      })}
+                    {showList ?
+                      <Row>
+                        {insuredUsers.map((users, index) => {
+                          return (
+                            <Row key={index}>
+                              <Col xs={8}>
+                                <Row>
+                                  <p>{users.name}</p>
+                                </Row>
+                                <Row>
+                                  <p>{users.dni}</p>
+                                </Row>
+                              </Col>
+                            </Row>
+                          );
+                        })}
                       </Row> : ''}
                     <Row>
                       <Col xs={12}>
@@ -140,19 +141,88 @@ const ThirdStep = ({
                         )}
                       </Col>
                     </Row>
-                    {/* <Row>
+                    <Row>
+                      <Col xs={12}>
+                        <Typography align="center" variant="h5" display="block">
+                          Ahora ingresa los datos de tu tarjeta
+                        </Typography>
+                      </Col>
+                    </Row>
+                    <Row>
+                    <Col xs={12}>
+                      <Field
+                        component={TextFieldComponent}
+                        label={"Nombre del Titlar"}
+                        name={"name"}
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs={12}>
+                      <Field
+                        component={TextFieldComponent}
+                        label={"Número de Tarjeta"}
+                        name={"numberCard"}
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs={6}>
+                      <Field
+                        component={TextFieldComponent}
+                        label={"Fecha de Vencimiento"}
+                        name={"dueDate"}
+                      />
+                    </Col>
+                    <Col xs={6}>
+                      <Field
+                        component={TextFieldComponent}
+                        label={"CVV"}
+                        name={"cvv"}
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs={12}>
+                      <Field
+                        component={TextFieldComponent}
+                        label={"Correo electrónico"}
+                        name={"email"}
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs={12}>
+                      <Field
+                        component={SquareCheckboxComponent}
+                        label={"Autorizo el cargo de mi cuota a la tarjeta registrada como cargo recurrente."}
+                        name={"acceptcuota"}
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs={12}>
+                      <Field
+                        component={SquareCheckboxComponent}
+                        label={"Acepto las políticas de envío de la póliza electrónica."}
+                        name={"acceptpolitics"}
+                      />
+                    </Col>
+                  </Row>
+
+                    <Row>
                       <Col xs={12}>
                         <Button
                           variant="contained"
                           color="primary"
                           fullWidth
                           type="submit"
-                          disabled={submitting || invalid}
+                          // disabled={submitting || invalid
                         >
-                          COMENCEMOS
+                          PAGAR {totalAmount}
                         </Button>
                       </Col>
-                    </Row> */}
+                    </Row>
                   </FormComponent>
                 </Col>
               </Row>
