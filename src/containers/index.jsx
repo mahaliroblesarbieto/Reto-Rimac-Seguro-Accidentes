@@ -104,6 +104,7 @@ class Index extends React.Component {
         /> : ""}
         {this.state.step === 3 ? 
         <ThirdStepContainer
+        insuredUsers={this.state.insuredUsers}
         /> : ""}
       </>
     );

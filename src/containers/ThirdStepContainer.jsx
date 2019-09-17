@@ -10,7 +10,8 @@ class ThirdStepContainer extends React.Component {
       }
 
       handleChange = (event) => {
-          this.setState({totalAmount: event.target.value}, () => console.log(this.state.totalAmount)
+          const newAmount = parseInt(event.target.value) * this.props.insuredUsers.length;
+          this.setState({totalAmount: newAmount}, () => console.log(this.state.totalAmount)
           )
         
       }
