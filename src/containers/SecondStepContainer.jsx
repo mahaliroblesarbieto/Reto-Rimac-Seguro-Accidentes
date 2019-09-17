@@ -11,6 +11,11 @@ class SecondStepContainer extends React.Component {
         };
       }
 
+      showStepThree= () => {
+        this.props.updateStep();
+
+      }
+
       handleUpdateUser = (index) => {
         const dataUser = this.props.insuredUsers[index];
         this.setState({
@@ -66,6 +71,7 @@ class SecondStepContainer extends React.Component {
         handleUpdateUser={this.handleUpdateUser}
         initialValues={this.state.initialValues}
         showList={this.showList}
+        showStepThree={this.showStepThree}
         />
     }
 }

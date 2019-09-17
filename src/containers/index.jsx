@@ -2,6 +2,7 @@ import React from "react";
 import IntroductionContainer from "./IntroductionContainer";
 import FirstStepContainer from "./FirstStepContainer";
 import SecondStepContainer from "./SecondStepContainer";
+import ThirdStepContainer from "./ThirdStepContainer";
 import { Row, Col } from "react-styled-flexboxgrid";
 import { connect } from "react-redux";
 import { setName } from "../redux/actions";
@@ -99,6 +100,10 @@ class Index extends React.Component {
         updateInsuredUsers={this.updateInsuredUsers}
         updateUserData={this.updateUserData}
         handleDeleteUser={this.handleDeleteUser}
+        updateStep={this.updateStep}
+        /> : ""}
+        {this.state.step === 3 ? 
+        <ThirdStepContainer
         /> : ""}
       </>
     );

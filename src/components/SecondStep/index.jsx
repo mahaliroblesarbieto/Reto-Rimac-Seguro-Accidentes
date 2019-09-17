@@ -24,7 +24,8 @@ const SecondStep = ({
   onSubmitSuccess,
   handleDeleteUser,
   handleUpdateUser,
-  showList
+  showList,
+  showStepThree
 }) => {
   return (
     <React.Fragment>
@@ -107,7 +108,8 @@ const SecondStep = ({
                           variant="contained"
                           color="primary"
                           fullWidth
-                          type="submit"
+                          type="button"
+                          onClick={() => showStepThree()}
                         >
                           CONTINUAR
                         </Button>
@@ -124,8 +126,4 @@ const SecondStep = ({
   );
 };
 
-export default reduxForm({
-  form: "FormSecondStep"
-  //   enableReinitialize: true,
-  //   validate: handleValidateSecondStepForm,
-})(SecondStep);
+export default SecondStep;
