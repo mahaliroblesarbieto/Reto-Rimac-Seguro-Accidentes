@@ -4,8 +4,10 @@ import TextFieldComponent from "../ElementsUI/TextFieldComponent";
 import RadioGroupPlanComponent from "../ElementsUI/RadioGroupPlanComponent";
 import { Row, Col } from "react-styled-flexboxgrid";
 import { Button, Typography, Link } from "@material-ui/core";
+import Input from '@material-ui/core/Input';
 import FormComponent from "../ElementsUI/FormComponent";
 import MobileWidth from "../MobileWidth";
+import InputAdornment from '@material-ui/core/InputAdornment';
 import {
   dniNumber,
   handleValidateDniNumber,
@@ -26,7 +28,9 @@ const ThirdStep = ({
   modifyDni,
   invalid,
   totalAmount,
-  handleChange
+  handleChange,
+  handleChangeDiscountCode,
+  handleApplyDiscount
 }) => {
   return (
     <React.Fragment>
@@ -61,22 +65,42 @@ const ThirdStep = ({
                       </Col>
                     </Row>
                     <Row>
-                <Col xs={12}>
-                  <Typography align="center" variant="h5" display="block">
-                    PAGO TOTAL
+                      <Col xs={12}>
+                        <Typography align="center" variant="h5" display="block">
+                          PAGO TOTAL
                   </Typography>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={10}>
-                  <Typography align="center" display="block">
-                    Por 2 asegurados DETALLE
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col xs={10}>
+                        <Typography align="center" display="block">
+                          Por 2 asegurados DETALLE
                   </Typography>
-                </Col>
-                <Col xs={2}>
-                  {totalAmount}
-                </Col>
-              </Row>
+                      </Col>
+                      <Col xs={2}>
+                        {totalAmount}
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col xs={12}>
+                        <Input
+                          id="descuento"
+                          type='text'
+                          // value={discountcode}
+                          onChange={handleChangeDiscountCode}
+                          endAdornment={
+                            <InputAdornment position="end">
+                              <Button
+                                aria-label="toggle password visibility"
+                                onClick={handleApplyDiscount}
+                              >
+                                APLICAR
+                              </Button>
+                            </InputAdornment>
+                          }
+                        />
+                      </Col>
+                    </Row>
                     {/* <Row>
                       <Col xs={12}>
                         <Button
@@ -103,6 +127,6 @@ const ThirdStep = ({
 
 export default reduxForm({
   form: "FormThirdStep",
-//   enableReinitialize: true,
-//   validate: handleValidateFirstStepForm,
+  //   enableReinitialize: true,
+  //   validate: handleValidateFirstStepForm,
 })(ThirdStep);
