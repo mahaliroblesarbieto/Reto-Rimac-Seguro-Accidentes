@@ -1,7 +1,7 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
 import TextFieldComponent from "../ElementsUI/TextFieldComponent";
-import RadioGroupComponent from "../ElementsUI/RadioGroupComponent";
+import RadioGroupPlanComponent from "../ElementsUI/RadioGroupPlanComponent";
 import { Row, Col } from "react-styled-flexboxgrid";
 import { Button, Typography, Link } from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
@@ -25,6 +25,8 @@ const ThirdStep = ({
   disabledTextfieldDni,
   modifyDni,
   invalid,
+  totalAmount,
+  handleChange
 }) => {
   return (
     <React.Fragment>
@@ -46,51 +48,36 @@ const ThirdStep = ({
                   </Typography>
                 </Col>
               </Row>
-              {/* <Row>
+              <Row>
                 <Col xs={12}>
                   <FormComponent onSubmit={handleSubmit}>
                     <Row>
-                      <Typography align="center" display="block">
-                        Datos del titular
-                      </Typography>
-                    </Row>
-                    <Row>
                       <Col xs={12}>
                         <Field
-                          component={TextFieldComponent}
-                          label={"Nro. de Documento"}
-                          name={"dni"}
-                          validate={dniNumber}
-                          normalize={handleValidateDniNumber}
-                          disabled={disabledTextfieldDni ? true : false}
-                        />
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col xs={12}>
-                        <Field
-                          component={TextFieldComponent}
-                          label={"Correo"}
-                          name={"email"}
-                          // normalize={handleValidateNameAndLastName}
-                          validate={handleValidateEmail}
-                        />
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Typography align="center" display="block">
-                        ¿ VAS A ASEGURARTE A TI?
-                      </Typography>
-                    </Row>
-                    <Row>
-                      <Col xs={12}>
-                        <Field
-                          name="ensureYourself"
-                          component={RadioGroupComponent}
+                          name="plan"
+                          component={RadioGroupPlanComponent}
+                          onChange={handleChange}
                         ></Field>
                       </Col>
                     </Row>
                     <Row>
+                <Col xs={12}>
+                  <Typography align="center" variant="h5" display="block">
+                    PAGO TOTAL
+                  </Typography>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={10}>
+                  <Typography align="center" display="block">
+                    Por 2 asegurados DETALLE
+                  </Typography>
+                </Col>
+                <Col xs={2}>
+                  {totalAmount}
+                </Col>
+              </Row>
+                    {/* <Row>
                       <Col xs={12}>
                         <Button
                           variant="contained"
@@ -102,18 +89,10 @@ const ThirdStep = ({
                           COMENCEMOS
                         </Button>
                       </Col>
-                    </Row>
-                    <Link
-                      type="button"
-                      component="button"
-                      variant="body2"
-                      onClick={modifyDni}
-                    >
-                      Modificar DNI
-                    </Link>
+                    </Row> */}
                   </FormComponent>
                 </Col>
-              </Row> */}
+              </Row>
             </Col>
           </Row>
         </MobileWidth>
