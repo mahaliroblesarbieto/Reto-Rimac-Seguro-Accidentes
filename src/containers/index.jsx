@@ -34,6 +34,12 @@ class Index extends React.Component {
     )
   }
 
+  updateUserData = (newDataUser, index) => {
+    let newInsuredUser = [...this.state.insuredUsers];
+    newInsuredUser[index] = newDataUser;
+    this.setState({insuredUsers: newInsuredUser})
+  }
+
   handleDeleteUser = (dniUser) => {
     const newArrayInjuredUsersDelete = this.state.insuredUsers.filter(item => item.dni !== dniUser);
     this.setState({ insuredUsers: newArrayInjuredUsersDelete});
@@ -91,6 +97,7 @@ class Index extends React.Component {
         numberDni={this.state.numberDni}
         insuredUsers={this.state.insuredUsers}
         updateInsuredUsers={this.updateInsuredUsers}
+        updateUserData={this.updateUserData}
         handleDeleteUser={this.handleDeleteUser}
         /> : ""}
       </>

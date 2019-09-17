@@ -7,6 +7,7 @@ class SecondStepContainer extends React.Component {
         this.state = {
           addUser: false,
           initialValues: '',
+          indexUser: ''
         };
       }
 
@@ -15,13 +16,18 @@ class SecondStepContainer extends React.Component {
         this.setState({
           addUser: true,
           initialValues: dataUser,
+          indexUser: index
         });
       }
 
       handleSubmitUserDataForm = values => {
         console.log(values);
         const data= { name: values.name, dni: values.dni, lastName: values.lastName, secondLastName: values.secondLastName, birthday: values.birthday, gender: values.gender }
-            this.props.updateInsuredUsers(data);
+        if(this.state.initialValues === '') {    
+        this.props.updateInsuredUsers(data)
+        } else {
+          this.props.updateUserData(data, this.state.indexUser)
+        }
             return values;
         }
 
