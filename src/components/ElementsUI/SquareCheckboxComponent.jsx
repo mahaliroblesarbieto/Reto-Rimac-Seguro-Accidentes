@@ -1,15 +1,26 @@
 import React from "react";
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { withStyles } from '@material-ui/core/styles';
+import { lightGreen } from '@material-ui/core/colors';
+
+const GreenCheckbox = withStyles({
+  root: {
+    color: lightGreen[500],
+    '&$checked': {
+      color: lightGreen[500],
+    },
+  },
+  checked: {},
+})(props => <Checkbox color="default" {...props} />);
 
 const SquareCheckboxComponent = ({ input, label, fields }) => {
   return(
     <React.Fragment>
       <FormControlLabel
         control={
-          <Checkbox
+          <GreenCheckbox
             checked={input.value ? true : false}
-            // checked={typeof fields['checkbox'].checked == 'undefined'?false:this.props.fields['checkbox'].checked} 
             onChange={input.onChange}
           />
         }
