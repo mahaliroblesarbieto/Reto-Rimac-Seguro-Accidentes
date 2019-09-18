@@ -6,8 +6,10 @@ import ThirdStepContainer from "./ThirdStepContainer";
 import FourthStep from "../components/FourthStep";
 import { connect } from "react-redux";
 import { setName } from "../redux/actions";
-import { Typography } from "@material-ui/core";
+import "./StylesContainer/index.scss";
 import { Row, Col } from "react-styled-flexboxgrid";
+import IconButton from '@material-ui/core/IconButton';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 // probando que hace commit con mi nombre
 
@@ -34,19 +36,19 @@ class Index extends React.Component {
   };
 
   updateInsuredUsers = (newUser) => {
-    this.setState({insuredUsers: [...this.state.insuredUsers, newUser]}, () => console.log(this.state.insuredUsers)
+    this.setState({ insuredUsers: [...this.state.insuredUsers, newUser] }, () => console.log(this.state.insuredUsers)
     )
   }
 
   updateUserData = (newDataUser, index) => {
     let newInsuredUser = [...this.state.insuredUsers];
     newInsuredUser[index] = newDataUser;
-    this.setState({insuredUsers: newInsuredUser})
+    this.setState({ insuredUsers: newInsuredUser })
   }
 
   handleDeleteUser = (dniUser) => {
     const newArrayInjuredUsersDelete = this.state.insuredUsers.filter(item => item.dni !== dniUser);
-    this.setState({ insuredUsers: newArrayInjuredUsersDelete});
+    this.setState({ insuredUsers: newArrayInjuredUsersDelete });
   }
 
   updateNameAndNumberDni = (newName, newNumberDni) => {
@@ -64,64 +66,69 @@ class Index extends React.Component {
       numberDni: newNumberDni,
       email: newEmail,
       ensureYourself: newEnsureYourself,
-    }, () => console.log(this.state.numberDni, this.state.email, this.state.ensureYourself ));
+    }, () => console.log(this.state.numberDni, this.state.email, this.state.ensureYourself));
     console.log('esta actualizando datos');
   }
 
   restart = () => {
-    this.setState({step: 0})
+    this.setState({ step: 0 })
   }
 
   render() {
     return (
       <>
-      <Row>
-        <Col xs={12} md={4} lg={4}></Col>
-        <Col xs={12} md={8} lg={8}>
-        {this.state.step === 0 ? (
-          <IntroductionContainer
-            updateNameAndNumberDni={this.updateNameAndNumberDni}
-            setName={this.props.setName}
-            updateStep={this.updateStep}
-          />
-        ) : (
-          <Row>
-            <Col xs={12}>
-              <Typography align="center" variant="h5" display="block">
-                Paso {this.state.step} de 4
-              </Typography>
-            </Col>
-          </Row>
-        )}
-        {this.state.step === 1 ? 
-        <FirstStepContainer 
-        name={this.state.name} 
-        initialValues={{dni: this.state.numberDni}}
-        updateNumberDniEmailAndEnsureYourself={this.updateNumberDniEmailAndEnsureYourself}
-        updateInsuredUsers={this.updateInsuredUsers}
-        updateStep={this.updateStep}
-        /> : ""}
-        {this.state.step === 2 ? 
-        <SecondStepContainer
-        ensureYourself={this.state.ensureYourself} 
-        name={this.state.name}
-        numberDni={this.state.numberDni}
-        insuredUsers={this.state.insuredUsers}
-        updateInsuredUsers={this.updateInsuredUsers}
-        updateUserData={this.updateUserData}
-        handleDeleteUser={this.handleDeleteUser}
-        updateStep={this.updateStep}
-        /> : ""}
-        {this.state.step === 3 ? 
-        <ThirdStepContainer
-        insuredUsers={this.state.insuredUsers}
-        updateStep={this.updateStep}
-        /> : ""}
-        {this.state.step === 4 ? 
-        <FourthStep
-        restart = {this.restart}
-        /> : ""}
-        </Col>
+        <Row>
+          <Col xs={12} md={4} lg={4}></Col>
+          <Col xs={12} md={8} lg={8}>
+            {this.state.step === 0 ? (
+              <IntroductionContainer
+                updateNameAndNumberDni={this.updateNameAndNumberDni}
+                setName={this.props.setName}
+                updateStep={this.updateStep}
+              />
+            ) : (
+                <Row className="step">
+                  <Col xs={1}>
+                    <IconButton aria-label="delete">
+                      <ArrowBackIosIcon />
+                    </IconButton>
+                  </Col>
+                  <Col xs={11}>
+                    <p>
+                      {this.state.step} DE 4
+              </p>
+                  </Col>
+                </Row>
+              )}
+            {this.state.step === 1 ?
+              <FirstStepContainer
+                name={this.state.name}
+                initialValues={{ dni: this.state.numberDni }}
+                updateNumberDniEmailAndEnsureYourself={this.updateNumberDniEmailAndEnsureYourself}
+                updateInsuredUsers={this.updateInsuredUsers}
+                updateStep={this.updateStep}
+              /> : ""}
+            {this.state.step === 2 ?
+              <SecondStepContainer
+                ensureYourself={this.state.ensureYourself}
+                name={this.state.name}
+                numberDni={this.state.numberDni}
+                insuredUsers={this.state.insuredUsers}
+                updateInsuredUsers={this.updateInsuredUsers}
+                updateUserData={this.updateUserData}
+                handleDeleteUser={this.handleDeleteUser}
+                updateStep={this.updateStep}
+              /> : ""}
+            {this.state.step === 3 ?
+              <ThirdStepContainer
+                insuredUsers={this.state.insuredUsers}
+                updateStep={this.updateStep}
+              /> : ""}
+            {this.state.step === 4 ?
+              <FourthStep
+                restart={this.restart}
+              /> : ""}
+          </Col>
         </Row>
       </>
     );
