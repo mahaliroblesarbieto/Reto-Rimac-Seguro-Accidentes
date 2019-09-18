@@ -14,7 +14,7 @@ import {
 } from "../../validations/field";
 import {handleValidateFirstStepForm} from "../../validations/form";
 
-const FourthStep = ({restart
+const FourthStep = ({restart, email
 }) => {
   return (
     <React.Fragment>
@@ -39,7 +39,7 @@ const FourthStep = ({restart
               <Row>
                 <Col xs={12}>
                   <p>
-                  Descarga tu póliza llegará que en un máximo de 24 horas al correo eva.pinedo@rimac.com.pe
+                  Descarga tu póliza llegará que en un máximo de 24 horas al correo {email}
                   </p>
                 </Col>
               </Row>
