@@ -5,7 +5,7 @@ import SecondStepContainer from "./SecondStepContainer";
 import ThirdStepContainer from "./ThirdStepContainer";
 import FourthStep from "../components/FourthStep";
 import { connect } from "react-redux";
-import { setName } from "../redux/actions";
+import { setName, getDataUser } from "../redux/actions";
 import "./StylesContainer/index.scss";
 import { Row, Col } from "react-styled-flexboxgrid";
 import IconButton from '@material-ui/core/IconButton';
@@ -26,9 +26,9 @@ class Index extends React.Component {
     };
   }
 
-  // componentDidUpdate() {
-  //   this.handleDeleteUser();
-  // }
+  componentDidMount() {
+    this.props.getDataUser();
+  }
 
   updateStep = () => {
     const newStep = this.state.step + 1;
@@ -143,7 +143,8 @@ class Index extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setName: name => dispatch(setName(name))
+    setName: name => dispatch(setName(name)),
+    getDataUser: () => dispatch(getDataUser())
   };
 };
 
