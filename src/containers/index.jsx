@@ -12,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import Header from "../components/Utils/Header";
 import AdIntro from "../components/Utils/AdIntro";
+import SecondImg from "../assets/Illustration.png"
 
 // probando que hace commit con mi nombre
 
@@ -86,9 +87,10 @@ class Index extends React.Component {
     return (
       <>
         <Row>
-          <Col xs={12} md={6} lg={6} >
+          <Col xs={12} md={6} lg={6} style={{position:"relative"}}>
             <Header className="fixed"/>
-            <AdIntro className="fixed" xs={false}/>    
+            <AdIntro className="fixed" xs={false}/> 
+            <img src={SecondImg} style={{position: "absolute", top:20, width:"300px", height: "400px", right: 0 }}></img>   
           </Col>
           <Col xs={12} md={6} lg={6}>
             {this.state.step === 0 ? (
@@ -139,6 +141,7 @@ class Index extends React.Component {
             {this.state.step === 4 ?
               <FourthStep
                 restart={this.restart}
+                email = {this.state.email}
               /> : ""}
           </Col>
         </Row>
