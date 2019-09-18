@@ -10,6 +10,7 @@ import "./StylesContainer/index.scss";
 import { Row, Col } from "react-styled-flexboxgrid";
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import Header from "../components/Utils/Header";
 
 // probando que hace commit con mi nombre
 
@@ -78,7 +79,9 @@ class Index extends React.Component {
     return (
       <>
         <Row>
-          <Col xs={12} md={4} lg={4}></Col>
+          <Col xs={12} md={4} lg={4}>
+              <Header/>
+          </Col>
           <Col xs={12} md={8} lg={8}>
             {this.state.step === 0 ? (
               <IntroductionContainer
