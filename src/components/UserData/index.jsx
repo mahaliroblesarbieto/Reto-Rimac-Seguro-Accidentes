@@ -6,8 +6,9 @@ import RadioGroupGenderComponent from "../ElementsUI/RadioGroupGenderComponent";
 import { Row, Col } from "react-styled-flexboxgrid";
 import { Button, Typography, Link } from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
-// import { dniNumber, handleValidateDniNumber } from "../../validations/field";
+import { dniNumber, handleValidateDniNumber, handleValidateNameAndLastName } from "../../validations/field";
 import {handleValidateUserDataForm} from "../../validations/form";
+import ButtonComponent from "../ElementsUI/ButtonComponent";
 
 const UserData = ({
   error,
@@ -21,7 +22,8 @@ const UserData = ({
   disabledTextfieldDni,
   modifyDni,
   invalid,
-  showList
+  showList,
+  insuredUsers
 }) => {
   return (
     <React.Fragment>
@@ -30,9 +32,9 @@ const UserData = ({
           <Col xs={12}>
             <Row>
               <Col xs={12}>
-                <Typography align="center" variant="h5" display="block">
-                  Datos del asegurado Nº
-                </Typography>
+                <p>
+                  Datos del asegurado Nº {insuredUsers.length + 1}
+                </p>
               </Col>
             </Row>
             <Row>
@@ -44,8 +46,8 @@ const UserData = ({
                         component={TextFieldComponent}
                         label={"Nro. de Documento"}
                         name={"dni"}
-                        // validate={dniNumber}
-                        // normalize={handleValidateDniNumber}
+                        validate={dniNumber}
+                        normalize={handleValidateDniNumber}
                       />
                     </Col>
                   </Row>
@@ -55,6 +57,7 @@ const UserData = ({
                         component={TextFieldComponent}
                         label={"Nombres"}
                         name={"name"}
+                        normalize={handleValidateNameAndLastName}
                       />
                     </Col>
                   </Row>
@@ -64,6 +67,7 @@ const UserData = ({
                         component={TextFieldComponent}
                         label={"Apellido Paterno"}
                         name={"lastName"}
+                        normalize={handleValidateNameAndLastName}
                       />
                     </Col>
                   </Row>
@@ -73,6 +77,7 @@ const UserData = ({
                         component={TextFieldComponent}
                         label={"Apellido Materno"}
                         name={"secondLastName"}
+                        normalize={handleValidateNameAndLastName}
                       />
                     </Col>
                     <Row>
@@ -80,14 +85,15 @@ const UserData = ({
                       <Field
                         component={DatePickerComponent}
                         name={"birthday"}
+                        variant="outlined"
                       />
                       </Col>
                     </Row>
                     <Row>
                       <Col xs={12}>
-                        <Typography align="center" variant="h5" display="block">
+                        <p>
                           GÈNERO
-                        </Typography>
+                        </p>
                       </Col>
                     </Row>
                     <Row>
@@ -99,7 +105,12 @@ const UserData = ({
                       </Col>
                     </Row>
                     <Col xs={12}>
-                      <Button
+                    <ButtonComponent
+                            type={"submit"}
+                            disabled={submitting || invalid}
+                            content={initialValues !== '' ? 'GUARDAR EDICIÓN' : 'GUARDAR' }
+                          />
+                      {/* <Button
                         variant="contained"
                         color="primary"
                         fullWidth
@@ -107,9 +118,10 @@ const UserData = ({
                         disabled={submitting || invalid}
                       >
                         {initialValues !== '' ? 'GUARDAR EDICIÓN' : 'GUARDAR' }
-                      </Button>
+                      </Button> */}
                     </Col>
                   </Row>
+                  <Row className="margin-link" center="xs">
                   <Link
                     type="button"
                     component="button"
@@ -118,6 +130,7 @@ const UserData = ({
                   >
                     Cancelar
                   </Link>
+                  </Row>
                 </FormComponent>
               </Col>
             </Row>

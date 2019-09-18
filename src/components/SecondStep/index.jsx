@@ -1,10 +1,12 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
 import { Row, Col } from "react-styled-flexboxgrid";
-import { Button, Typography, Link } from "@material-ui/core";
+import { Button, Link } from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
 import MobileWidth from "../MobileWidth";
 import UserData from "../UserData";
+import ButtonComponent from "../ElementsUI/ButtonComponent";
+import "../FormStyles/SecondStep.scss";
 
 const SecondStep = ({
   error,
@@ -35,23 +37,23 @@ const SecondStep = ({
             <Col xs={12}>
               <Row>
                 <Col xs={12}>
-                  <Typography align="center" variant="h5" display="block">
-                    Tus asegurados
-                  </Typography>
+                  <p className="title">
+                    Tus <span className="span">asegurados</span>
+                  </p>
                 </Col>
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Typography align="center" display="block">
+                  <p className="subtitle">
                     Preséntanos a quién vamos a proteger
-                  </Typography>
+                  </p>
                 </Col>
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Typography align="center" display="block">
+                  <p className="third-subtitle">
                     ASEGURADOS ({insuredUsers.length})
-                  </Typography>
+                  </p>
                 </Col>
               </Row>
               {addUser ? (
@@ -60,51 +62,64 @@ const SecondStep = ({
                   onSubmitSuccess={onSubmitSuccess}
                   initialValues={initialValues}
                   showList={showList}
+                  insuredUsers = {insuredUsers}
                 />
               ) : (
-                <Row>
-                  <FormComponent>
-                    <Row>
-                      {insuredUsers.map((users, index) => {
-                        return (
-                          <Row key={index}>
-                            <Col xs={8}>
-                              <Row>
-                                <p>{users.name}</p>
-                              </Row>
-                              <Row>
-                                <p>{users.dni}</p>
-                              </Row>
-                            </Col>
-                            <Col xs={4}>
-                              <Button
-                                onClick={() => handleDeleteUser(users.dni)}
-                              >
-                                Eliminar
+                  <Row>
+                    <FormComponent>
+                      <Row>
+                        {insuredUsers.map((users, index) => {
+                          return (
+                            <Row key={index} className="margin">
+                              <Col xs={5}>
+                                <Row>
+                                  <p className="name-list">{users.name}</p>
+                                </Row>
+                                <Row>
+                                  <p className="dni-list">{users.dni}</p>
+                                </Row>
+                              </Col>
+                              <Col xs={7}>
+                                <Row className="center-height">
+                                  <Col xs={6}>
+                                    <Button
+                                      onClick={() => handleDeleteUser(users.dni)}
+                                    >
+                                      Eliminar
                               </Button>
-                              <Button onClick={() => handleUpdateUser(index)}>
-                                Editar
+                                  </Col>
+                                  <Col xs={6}>
+                                    <Button onClick={() => handleUpdateUser(index)}>
+                                      Editar
                               </Button>
-                            </Col>
-                          </Row>
-                        );
-                      })}
-                    </Row>
-                    <Row>
-                      <Col>
-                        <Link
-                          type="button"
-                          component="button"
-                          variant="body2"
-                          onClick={() => showComponentUserData()}
-                        >
-                          Quiero asegurar a alguien más
+                                  </Col>
+                                </Row>
+                              </Col>
+                            </Row>
+                          );
+                        })}
+                      </Row>
+                      <Row className="margin-link">
+                        <Col>
+                          <Link
+                            type="button"
+                            component="button"
+                            variant="body2"
+                            onClick={() => showComponentUserData()}
+                          >
+                            Quiero asegurar a alguien más
                         </Link>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col xs={12}>
-                        <Button
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs={12}>
+                          <ButtonComponent
+                            type={"button"}
+                            disabled={submitting || invalid}
+                            content={"CONTINUAR"}
+                            onClick={() => showStepThree()}
+                          />
+                          {/* <Button
                           variant="contained"
                           color="primary"
                           fullWidth
@@ -112,12 +127,12 @@ const SecondStep = ({
                           onClick={() => showStepThree()}
                         >
                           CONTINUAR
-                        </Button>
-                      </Col>
-                    </Row>
-                  </FormComponent>
-                </Row>
-              )}
+                        </Button> */}
+                        </Col>
+                      </Row>
+                    </FormComponent>
+                  </Row>
+                )}
             </Col>
           </Row>
         </MobileWidth>

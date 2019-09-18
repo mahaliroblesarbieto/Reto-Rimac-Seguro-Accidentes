@@ -5,6 +5,7 @@ import RadioGroupComponent from "../ElementsUI/RadioGroupComponent";
 import { Row, Col } from "react-styled-flexboxgrid";
 import { Button, Typography, Link } from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
+import ButtonComponent from "../ElementsUI/ButtonComponent";
 import MobileWidth from "../MobileWidth";
 import {
   dniNumber,
@@ -23,35 +24,41 @@ const FourthStep = ({restart
             <Col xs={12}>
               <Row>
                 <Col xs={12}>
-                  <Typography align="center" variant="h5" display="block">
+                  <p className="span">
                     ¡Felicidades!
-                  </Typography>
+                  </p>
                 </Col>
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Typography align="center" display="block">
+                  <p className="title">
                     Tus seres queridos ahora se encuentran protegidos
-                  </Typography>
+                  </p>
                 </Col>
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Typography align="center" display="block">
+                  <p>
                   Descarga tu póliza llegará que en un máximo de 24 horas al correo eva.pinedo@rimac.com.pe
-                  </Typography>
+                  </p>
                 </Col>
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Typography align="center" display="block">
+                  <p>
                   Conoce más sobre tu seguro
-                  </Typography>
+                  </p>
                 </Col>
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Button onClick={restart}> IR AL HOME </Button>
+                  {/* <Button onClick={restart}> IR AL HOME </Button> */}
+                  <ButtonComponent
+                            type={"button"}
+                            onClick={restart}
+                            // disabled={submitting || invalid}
+                            content={`IR AL HOME `}
+                          />
                 </Col>
               </Row>
             </Col>

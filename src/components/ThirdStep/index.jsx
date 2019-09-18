@@ -3,16 +3,20 @@ import { reduxForm, Field } from "redux-form";
 import TextFieldComponent from "../ElementsUI/TextFieldComponent";
 import RadioGroupPlanComponent from "../ElementsUI/RadioGroupPlanComponent";
 import { Row, Col } from "react-styled-flexboxgrid";
-import { Button, Typography, Link } from "@material-ui/core";
-import Input from '@material-ui/core/Input';
+import { Button, Typography, Link, Input } from "@material-ui/core";
+import TextField from '@material-ui/core/TextField';
 import FormComponent from "../ElementsUI/FormComponent";
 import MobileWidth from "../MobileWidth";
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SquareCheckboxComponent from "../ElementsUI/SquareCheckboxComponent";
+import ButtonComponent from "../ElementsUI/ButtonComponent";
+import ButtonComponentDiscount from "../ElementsUI/ButtonComponentDiscount";
 import {
-  dniNumber,
-  handleValidateDniNumber,
   handleValidateEmail,
+  handleValidateDueDate,
+  handleValidateNameAndLastName,
+  handleValidateCardNumber,
+  handleValidateCvv
 } from "../../validations/field";
 // import {handleValidateFirstStepForm} from "../../validations/form";
 
@@ -47,16 +51,16 @@ const ThirdStep = ({
             <Col xs={12}>
               <Row>
                 <Col xs={12}>
-                  <Typography align="center" variant="h5" display="block">
-                    Elige el pago ideal
-                  </Typography>
+                  <p className="title">
+                    Elige el <span className="span">pago ideal</span>
+                  </p>
                 </Col>
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Typography align="center" display="block">
+                  <p className="subtitle">
                     Decide entre 12 pagos mensuales o sólo una cuota al año
-                  </Typography>
+                  </p>
                 </Col>
               </Row>
               <Row>
@@ -73,14 +77,14 @@ const ThirdStep = ({
                     </Row>
                     <Row>
                       <Col xs={12}>
-                        <Typography align="center" variant="h5" display="block">
+                        <p>
                           PAGO TOTAL
-                  </Typography>
+                  </p>
                       </Col>
                     </Row>
                     <Row>
                       <Col xs={10}>
-                        <Typography align="center" display="block">
+                        <p>
                           Por 2 asegurados
                           {showList ? <Link
                             type="button"
@@ -97,7 +101,7 @@ const ThirdStep = ({
                             >
                               DETALLE
                         </Link>}
-                        </Typography>
+                        </p>
                       </Col>
                       <Col xs={2}>
                         {totalAmount}
@@ -125,16 +129,24 @@ const ThirdStep = ({
                         {applyDiscount ? `¡Genial! tienes ${discount} % de dscto extra.` : (<Input
                           id="descuento"
                           type='text'
+                          variant="outlined"
+                          placeholder="Ingresar còdigo de dscto"
                           // value={discountcode}
                           onChange={handleChangeDiscountCode}
                           endAdornment={
                             <InputAdornment position="end">
-                              <Button
+                              <ButtonComponentDiscount
+                            type={"button"}
+                            onClick={handleApplyDiscount}
+                            // disabled={submitting || invalid}
+                            content={"APLICAR"}
+                          />
+                              {/* <Button
                                 aria-label="toggle password visibility"
                                 onClick={handleApplyDiscount}
                               >
                                 APLICAR
-                              </Button>
+                              </Button> */}
                             </InputAdornment>
                           }
                         />
@@ -143,17 +155,18 @@ const ThirdStep = ({
                     </Row>
                     <Row>
                       <Col xs={12}>
-                        <Typography align="center" variant="h5" display="block">
+                        <p>
                           Ahora ingresa los datos de tu tarjeta
-                        </Typography>
+                        </p>
                       </Col>
                     </Row>
                     <Row>
                     <Col xs={12}>
                       <Field
                         component={TextFieldComponent}
-                        label={"Nombre del Titlar"}
+                        label={"Nombre del Titular"}
                         name={"name"}
+                        normalize={handleValidateNameAndLastName}
                       />
                     </Col>
                   </Row>
@@ -163,6 +176,7 @@ const ThirdStep = ({
                         component={TextFieldComponent}
                         label={"Número de Tarjeta"}
                         name={"numberCard"}
+                        normalize={handleValidateCardNumber}
                       />
                     </Col>
                   </Row>
@@ -172,6 +186,7 @@ const ThirdStep = ({
                         component={TextFieldComponent}
                         label={"Fecha de Vencimiento"}
                         name={"dueDate"}
+                        normalize={handleValidateDueDate}
                       />
                     </Col>
                     <Col xs={6}>
@@ -179,6 +194,7 @@ const ThirdStep = ({
                         component={TextFieldComponent}
                         label={"CVV"}
                         name={"cvv"}
+                        normalize={handleValidateCvv}
                       />
                     </Col>
                   </Row>
@@ -188,6 +204,7 @@ const ThirdStep = ({
                         component={TextFieldComponent}
                         label={"Correo electrónico"}
                         name={"email"}
+                        validate={handleValidateEmail}
                       />
                     </Col>
                   </Row>
@@ -212,7 +229,12 @@ const ThirdStep = ({
 
                     <Row>
                       <Col xs={12}>
-                        <Button
+                      <ButtonComponent
+                            type={"submit"}
+                            // disabled={submitting || invalid}
+                            content={`PAGAR ${totalAmount}`}
+                          />
+                        {/* <Button
                           variant="contained"
                           color="primary"
                           fullWidth
@@ -220,7 +242,7 @@ const ThirdStep = ({
                           // disabled={submitting || invalid
                         >
                           PAGAR {totalAmount}
-                        </Button>
+                        </Button> */}
                       </Col>
                     </Row>
                   </FormComponent>

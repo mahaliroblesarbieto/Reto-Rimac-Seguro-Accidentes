@@ -1,0 +1,16 @@
+.button {
+  background: #ef3340;
+  border-radius: 6px;
+  font-family: 'Lato', sans-serif;
+  padding: 5%;
+  border: none;
+  color: white;
+  width: 100%;
+}
+
+button:disabled,
+button[disabled]{
+  border: none;
+  background-color: #EDEFF5;
+  color: #D4D5E8;
+}
