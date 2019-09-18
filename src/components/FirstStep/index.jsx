@@ -106,7 +106,7 @@ const FirstStep = ({
                         />
                       </Col>
                     </Row>
-                    <Row center="xs">
+                    <Row center="xs" className="margin-link">
                       <Link
                         type="button"
                         component="button"

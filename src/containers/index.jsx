@@ -11,6 +11,7 @@ import { Row, Col } from "react-styled-flexboxgrid";
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import Header from "../components/Utils/Header";
+import AdIntro from "../components/Utils/AdIntro";
 
 // probando que hace commit con mi nombre
 
@@ -34,6 +35,12 @@ class Index extends React.Component {
   updateStep = () => {
     const newStep = this.state.step + 1;
     this.setState({ step: newStep });
+  };
+
+  handleReturn = () => {
+    const newStepReturn = this.state.step - 1;
+    this.setState({ step: newStepReturn,
+    insuredUsers: [] });
   };
 
   updateInsuredUsers = (newUser) => {
@@ -79,10 +86,11 @@ class Index extends React.Component {
     return (
       <>
         <Row>
-          <Col xs={12} md={4} lg={4}>
-              <Header/>
+          <Col xs={12} md={6} lg={6} >
+            <Header className="fixed"/>
+            <AdIntro className="fixed" xs={false}/>    
           </Col>
-          <Col xs={12} md={8} lg={8}>
+          <Col xs={12} md={6} lg={6}>
             {this.state.step === 0 ? (
               <IntroductionContainer
                 updateNameAndNumberDni={this.updateNameAndNumberDni}
@@ -93,7 +101,7 @@ class Index extends React.Component {
             ) : (
                 <Row className="step">
                   <Col xs={1}>
-                    <IconButton aria-label="delete">
+                    <IconButton aria-label="delete" onClick={this.handleReturn}>
                       <ArrowBackIosIcon />
                     </IconButton>
                   </Col>

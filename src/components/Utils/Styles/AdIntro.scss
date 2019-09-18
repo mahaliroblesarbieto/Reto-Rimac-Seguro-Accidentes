@@ -1,0 +1,22 @@
+
+
+.white{
+    color: white;
+}
+
+.rectangle {
+    width:100%;
+    height: 90vh;
+}
+
+.absolute {
+    position: absolute;
+}
+
+@media only screen and (max-width: 600px) {
+    .rectangle {
+        width:100%;
+        height: 50vh;
+        position: relative;
+    }
+  }

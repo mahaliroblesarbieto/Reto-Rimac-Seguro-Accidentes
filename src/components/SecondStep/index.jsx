@@ -62,6 +62,7 @@ const SecondStep = ({
                   onSubmitSuccess={onSubmitSuccess}
                   initialValues={initialValues}
                   showList={showList}
+                  insuredUsers = {insuredUsers}
                 />
               ) : (
                   <Row>
@@ -72,10 +73,10 @@ const SecondStep = ({
                             <Row key={index} className="margin">
                               <Col xs={5}>
                                 <Row>
-                                  <p>{users.name}</p>
+                                  <p className="name-list">{users.name}</p>
                                 </Row>
                                 <Row>
-                                  <p>{users.dni}</p>
+                                  <p className="dni-list">{users.dni}</p>
                                 </Row>
                               </Col>
                               <Col xs={7}>
@@ -98,7 +99,7 @@ const SecondStep = ({
                           );
                         })}
                       </Row>
-                      <Row>
+                      <Row className="margin-link">
                         <Col>
                           <Link
                             type="button"

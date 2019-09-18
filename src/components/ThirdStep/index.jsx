@@ -10,6 +10,7 @@ import MobileWidth from "../MobileWidth";
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SquareCheckboxComponent from "../ElementsUI/SquareCheckboxComponent";
 import ButtonComponent from "../ElementsUI/ButtonComponent";
+import ButtonComponentDiscount from "../ElementsUI/ButtonComponentDiscount";
 import {
   handleValidateEmail,
   handleValidateDueDate,
@@ -134,7 +135,7 @@ const ThirdStep = ({
                           onChange={handleChangeDiscountCode}
                           endAdornment={
                             <InputAdornment position="end">
-                              <ButtonComponent
+                              <ButtonComponentDiscount
                             type={"button"}
                             onClick={handleApplyDiscount}
                             // disabled={submitting || invalid}
