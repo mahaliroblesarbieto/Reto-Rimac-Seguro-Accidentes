@@ -35,23 +35,23 @@ const SecondStep = ({
             <Col xs={12}>
               <Row>
                 <Col xs={12}>
-                  <Typography align="center" variant="h5" display="block">
-                    Tus asegurados
-                  </Typography>
+                  <p className="title">
+                    Tus <span className="span">asegurados</span>
+                  </p>
                 </Col>
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Typography align="center" display="block">
+                  <p className="subtitle">
                     Preséntanos a quién vamos a proteger
-                  </Typography>
+                  </p>
                 </Col>
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Typography align="center" display="block">
+                  <p className="third-subtitle">
                     ASEGURADOS ({insuredUsers.length})
-                  </Typography>
+                  </p>
                 </Col>
               </Row>
               {addUser ? (
