@@ -41,8 +41,10 @@ class Index extends React.Component {
 
   handleReturn = () => {
     const newStepReturn = this.state.step - 1;
-    this.setState({ step: newStepReturn,
-    insuredUsers: [] });
+    this.setState({
+      step: newStepReturn,
+      insuredUsers: []
+    });
   };
 
   updateInsuredUsers = (newUser) => {
@@ -88,12 +90,14 @@ class Index extends React.Component {
     return (
       <>
         <Row>
-          <Col xs={12} md={6} lg={6} style={{position:"relative"}}>
-            <Header className="fixed"/>
-            <AdIntro className="fixed" xs={false}/> 
-            {this.state.step=== 0? <img src={FirstImg} style={{position: "absolute", top:20, width:"253px", height: "400px", right: 0 }}></img>:
-            <img src={SecondImg} style={{position: "absolute", top:20, width:"300px", height: "400px", right: 0 }}></img>   }
-            
+          <Col xs={12} md={6} lg={6} style={{ position: "relative" }}>
+            <Header className="fixed" />
+            <AdIntro className="fixed" xs={false} />
+            {/* {this.state.step=== 0 ? <p style={{ position: "absolute", top: 100,  right: 300, color: "white", fontSize: 33 }} className="position"> Seguro de <br></br>accidentes para <br></br> niños y jòvenes</p>: ''} */}
+            {this.state.step === 0 ? 
+            <img src={FirstImg} style={{ position: "absolute", top: 20, width: "30%", right: 0 }}></img> :
+              <img src={SecondImg} style={{ position: "absolute", top: 20, width: "40%", right: 0 }}></img>}
+
           </Col>
           <Col xs={12} md={6} lg={6}>
             {this.state.step === 0 ? (
@@ -144,7 +148,7 @@ class Index extends React.Component {
             {this.state.step === 4 ?
               <FourthStep
                 restart={this.restart}
-                email = {this.state.email}
+                email={this.state.email}
               /> : ""}
           </Col>
         </Row>
@@ -153,11 +157,11 @@ class Index extends React.Component {
   }
 }
 
-const mapStateToProps = (state ) => {
-    return {
-      userData: state.users.userData,
-    }
+const mapStateToProps = (state) => {
+  return {
+    userData: state.users.userData,
   }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
