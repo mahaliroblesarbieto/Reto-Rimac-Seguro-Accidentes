@@ -10,9 +10,11 @@ import MobileWidth from "../MobileWidth";
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SquareCheckboxComponent from "../ElementsUI/SquareCheckboxComponent";
 import {
-  dniNumber,
-  handleValidateDniNumber,
   handleValidateEmail,
+  handleValidateDueDate,
+  handleValidateNameAndLastName,
+  handleValidateCardNumber,
+  handleValidateCvv
 } from "../../validations/field";
 // import {handleValidateFirstStepForm} from "../../validations/form";
 
@@ -152,8 +154,9 @@ const ThirdStep = ({
                     <Col xs={12}>
                       <Field
                         component={TextFieldComponent}
-                        label={"Nombre del Titlar"}
+                        label={"Nombre del Titular"}
                         name={"name"}
+                        normalize={handleValidateNameAndLastName}
                       />
                     </Col>
                   </Row>
@@ -163,6 +166,7 @@ const ThirdStep = ({
                         component={TextFieldComponent}
                         label={"Número de Tarjeta"}
                         name={"numberCard"}
+                        normalize={handleValidateCardNumber}
                       />
                     </Col>
                   </Row>
@@ -172,6 +176,7 @@ const ThirdStep = ({
                         component={TextFieldComponent}
                         label={"Fecha de Vencimiento"}
                         name={"dueDate"}
+                        normalize={handleValidateDueDate}
                       />
                     </Col>
                     <Col xs={6}>
@@ -179,6 +184,7 @@ const ThirdStep = ({
                         component={TextFieldComponent}
                         label={"CVV"}
                         name={"cvv"}
+                        normalize={handleValidateCvv}
                       />
                     </Col>
                   </Row>
@@ -188,6 +194,7 @@ const ThirdStep = ({
                         component={TextFieldComponent}
                         label={"Correo electrónico"}
                         name={"email"}
+                        validate={handleValidateEmail}
                       />
                     </Col>
                   </Row>

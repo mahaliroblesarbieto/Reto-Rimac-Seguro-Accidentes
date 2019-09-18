@@ -6,7 +6,7 @@ import RadioGroupGenderComponent from "../ElementsUI/RadioGroupGenderComponent";
 import { Row, Col } from "react-styled-flexboxgrid";
 import { Button, Typography, Link } from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
-// import { dniNumber, handleValidateDniNumber } from "../../validations/field";
+import { dniNumber, handleValidateDniNumber, handleValidateNameAndLastName } from "../../validations/field";
 import {handleValidateUserDataForm} from "../../validations/form";
 
 const UserData = ({
@@ -44,8 +44,8 @@ const UserData = ({
                         component={TextFieldComponent}
                         label={"Nro. de Documento"}
                         name={"dni"}
-                        // validate={dniNumber}
-                        // normalize={handleValidateDniNumber}
+                        validate={dniNumber}
+                        normalize={handleValidateDniNumber}
                       />
                     </Col>
                   </Row>
@@ -55,6 +55,7 @@ const UserData = ({
                         component={TextFieldComponent}
                         label={"Nombres"}
                         name={"name"}
+                        normalize={handleValidateNameAndLastName}
                       />
                     </Col>
                   </Row>
@@ -64,6 +65,7 @@ const UserData = ({
                         component={TextFieldComponent}
                         label={"Apellido Paterno"}
                         name={"lastName"}
+                        normalize={handleValidateNameAndLastName}
                       />
                     </Col>
                   </Row>
@@ -73,6 +75,7 @@ const UserData = ({
                         component={TextFieldComponent}
                         label={"Apellido Materno"}
                         name={"secondLastName"}
+                        normalize={handleValidateNameAndLastName}
                       />
                     </Col>
                     <Row>
