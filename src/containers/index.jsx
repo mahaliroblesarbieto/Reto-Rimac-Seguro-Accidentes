@@ -12,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import Header from "../components/Utils/Header";
 import AdIntro from "../components/Utils/AdIntro";
+import Carousel from "../components/Utils/Carousel";
 import SecondImg from "../assets/Illustration2.png"
 import FirstImg from "../assets/Illustration.png"
 
@@ -92,8 +93,8 @@ class Index extends React.Component {
         <Row>
           <Col xs={12} md={6} lg={6} style={{ position: "relative" }}>
             <Header className="fixed" />
-            <AdIntro className="fixed" xs={false} />
-            {/* {this.state.step=== 0 ? <p style={{ position: "absolute", top: 100,  right: 300, color: "white", fontSize: 33 }} className="position"> Seguro de <br></br>accidentes para <br></br> niños y jòvenes</p>: ''} */}
+            <AdIntro className="fixed"/>
+            {/* {this.state.step=== 0 ? <Carousel style={{ position: "absolute", top:0}}/>: ''} */}
             {this.state.step === 0 ? 
             <img src={FirstImg} style={{ position: "absolute", top: 20, width: "30%", right: 0 }}></img> :
               <img src={SecondImg} style={{ position: "absolute", top: 20, width: "40%", right: 0 }}></img>}

@@ -11,6 +11,12 @@
 
 .absolute {
     position: absolute;
+    top:0;
+    right: 5;
+}
+
+.relative {
+    position: relative;
 }
 
 @media only screen and (max-width: 600px) {

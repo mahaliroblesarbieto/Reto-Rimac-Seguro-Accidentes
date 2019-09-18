@@ -5,8 +5,8 @@ import Rectangle from "../../assets/Rectangle.png"
 
 const AdIntro = () => {
   return (
-    <div>
-      <img className="rectangle" src={Rectangle}></img>
+    <div className="relative">
+      <img className="rectangle relative" src={Rectangle}></img>
       <div className="absolute">
         <p className="white">Seguro de <br></br> accidentes para <br></br> Niños y Jóvenes</p>
         <div >
