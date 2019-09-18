@@ -85,6 +85,7 @@ class Index extends React.Component {
                 updateNameAndNumberDni={this.updateNameAndNumberDni}
                 setName={this.props.setName}
                 updateStep={this.updateStep}
+                userData={this.props.userData}
               />
             ) : (
                 <Row className="step">
@@ -135,11 +136,11 @@ class Index extends React.Component {
   }
 }
 
-// const mapStateToProps = (state ) => {
-//     return {
-//       state
-//     }
-//   }
+const mapStateToProps = (state ) => {
+    return {
+      userData: state.users.userData,
+    }
+  }
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -149,7 +150,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  // mapStateToProps,
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Index);
