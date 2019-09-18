@@ -2,6 +2,7 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 import TextFieldComponent from "../ElementsUI/TextFieldComponent";
 import RadioGroupComponent from "../ElementsUI/RadioGroupComponent";
+import ButtonComponent from "../ElementsUI/ButtonComponent";
 import { Row, Col } from "react-styled-flexboxgrid";
 import { Button, Typography, Link } from "@material-ui/core";
 import FormComponent from "../ElementsUI/FormComponent";
@@ -48,13 +49,15 @@ const FirstStep = ({
                       <Col xs={12}>
                         <p className="subtitle">
                           Puedes protegerlos por solo S/20 al mes por asegurado
-                  </p>
+                        </p>
                       </Col>
                     </Row>
                     <Row>
-                      <Typography align="center" display="block">
-                        Datos del titular
-                      </Typography>
+                      <Col xs={12}>
+                        <p className="second-subtitle">
+                          Datos del titular
+                      </p>
+                      </Col>
                     </Row>
                     <Row>
                       <Col xs={12}>
@@ -80,9 +83,11 @@ const FirstStep = ({
                       </Col>
                     </Row>
                     <Row>
-                      <Typography align="center" display="block">
-                        ¿ VAS A ASEGURARTE A TI?
-                      </Typography>
+                      <Col xs={12}>
+                        <p className="third-subtitle">
+                          ¿VAS A ASEGURARTE A TI?
+                      </p>
+                      </Col>
                     </Row>
                     <Row>
                       <Col xs={12}>
@@ -94,25 +99,23 @@ const FirstStep = ({
                     </Row>
                     <Row>
                       <Col xs={12}>
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          fullWidth
-                          type="submit"
+                        <ButtonComponent
+                          type={"submit"}
                           disabled={submitting || invalid}
-                        >
-                          COMENCEMOS
-                        </Button>
+                          content={"COMENCEMOS"}
+                        />
                       </Col>
                     </Row>
-                    <Link
-                      type="button"
-                      component="button"
-                      variant="body2"
-                      onClick={modifyDni}
-                    >
-                      Modificar DNI
+                    <Row center="xs">
+                      <Link
+                        type="button"
+                        component="button"
+                        variant="body2"
+                        onClick={modifyDni}
+                      >
+                        Modificar DNI
                     </Link>
+                    </Row>
                   </FormComponent>
                 </Col>
               </Row>
