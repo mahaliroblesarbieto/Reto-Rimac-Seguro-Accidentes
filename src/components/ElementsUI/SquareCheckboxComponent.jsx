@@ -3,6 +3,8 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { withStyles } from '@material-ui/core/styles';
 import { lightGreen } from '@material-ui/core/colors';
+import { Row, Col } from "react-styled-flexboxgrid";
+import "./Styles/SquareCheckbox.scss"
 
 const GreenCheckbox = withStyles({
   root: {
@@ -12,21 +14,27 @@ const GreenCheckbox = withStyles({
     },
   },
   checked: {},
-})(props => <Checkbox color="default" {...props} />);
+})(props => <Checkbox    {...props} />);
 
 const SquareCheckboxComponent = ({ input, label, fields }) => {
-  return(
+  return (
     <React.Fragment>
-      <FormControlLabel
-        control={
-          <GreenCheckbox
-            checked={input.value ? true : false}
-            onChange={input.onChange}
-          />
-        }
-        label={label}
-      />
-    </React.Fragment>
-  )}
+      <Row>
+        <Col xs={2}><GreenCheckbox
+          checked={input.value ? true : false}
+          onChange={input.onChange}
+        /></Col>
+        <Col xs={10}><label className="label">
+          {label}
+        </label></Col>
 
-  export default SquareCheckboxComponent;
+      </Row>
+
+
+
+
+    </React.Fragment>
+  )
+}
+
+export default SquareCheckboxComponent;

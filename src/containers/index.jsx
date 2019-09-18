@@ -3,11 +3,11 @@ import IntroductionContainer from "./IntroductionContainer";
 import FirstStepContainer from "./FirstStepContainer";
 import SecondStepContainer from "./SecondStepContainer";
 import ThirdStepContainer from "./ThirdStepContainer";
-import { Row, Col } from "react-styled-flexboxgrid";
 import FourthStep from "../components/FourthStep";
 import { connect } from "react-redux";
 import { setName } from "../redux/actions";
 import { Typography } from "@material-ui/core";
+import { Row, Col } from "react-styled-flexboxgrid";
 
 // probando que hace commit con mi nombre
 
@@ -75,6 +75,9 @@ class Index extends React.Component {
   render() {
     return (
       <>
+      <Row>
+        <Col xs={12} md={4} lg={4}></Col>
+        <Col xs={12} md={8} lg={8}>
         {this.state.step === 0 ? (
           <IntroductionContainer
             updateNameAndNumberDni={this.updateNameAndNumberDni}
@@ -118,6 +121,8 @@ class Index extends React.Component {
         <FourthStep
         restart = {this.restart}
         /> : ""}
+        </Col>
+        </Row>
       </>
     );
   }

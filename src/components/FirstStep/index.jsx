@@ -11,7 +11,8 @@ import {
   handleValidateDniNumber,
   handleValidateEmail,
 } from "../../validations/field";
-import {handleValidateFirstStepForm} from "../../validations/form";
+import { handleValidateFirstStepForm } from "../../validations/form";
+import "../FormStyles/FirstStep.scss";
 
 const FirstStep = ({
   error,
@@ -35,21 +36,21 @@ const FirstStep = ({
             <Col xs={12}>
               <Row>
                 <Col xs={12}>
-                  <Typography align="center" variant="h5" display="block">
-                    Hola {substrName}, cuéntanos sobre ti
-                  </Typography>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12}>
-                  <Typography align="center" display="block">
-                    Puedes protegerlos por solo S/20 al mes por asegurado
-                  </Typography>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12}>
                   <FormComponent onSubmit={handleSubmit}>
+                    <Row>
+                      <Col xs={12}>
+                        <p className="title">
+                          Hola <span className="span">{substrName}</span>, <br></br>cuéntanos sobre ti
+                        </p>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col xs={12}>
+                        <p className="subtitle">
+                          Puedes protegerlos por solo S/20 al mes por asegurado
+                  </p>
+                      </Col>
+                    </Row>
                     <Row>
                       <Typography align="center" display="block">
                         Datos del titular
