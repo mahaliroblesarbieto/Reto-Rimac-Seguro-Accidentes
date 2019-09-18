@@ -3,8 +3,8 @@ import { reduxForm, Field } from "redux-form";
 import TextFieldComponent from "../ElementsUI/TextFieldComponent";
 import RadioGroupPlanComponent from "../ElementsUI/RadioGroupPlanComponent";
 import { Row, Col } from "react-styled-flexboxgrid";
-import { Button, Typography, Link } from "@material-ui/core";
-import Input from '@material-ui/core/Input';
+import { Button, Typography, Link, Input } from "@material-ui/core";
+import TextField from '@material-ui/core/TextField';
 import FormComponent from "../ElementsUI/FormComponent";
 import MobileWidth from "../MobileWidth";
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -128,16 +128,24 @@ const ThirdStep = ({
                         {applyDiscount ? `¡Genial! tienes ${discount} % de dscto extra.` : (<Input
                           id="descuento"
                           type='text'
+                          variant="outlined"
+                          placeholder="Ingresar còdigo de dscto"
                           // value={discountcode}
                           onChange={handleChangeDiscountCode}
                           endAdornment={
                             <InputAdornment position="end">
-                              <Button
+                              <ButtonComponent
+                            type={"button"}
+                            onClick={handleApplyDiscount}
+                            // disabled={submitting || invalid}
+                            content={"APLICAR"}
+                          />
+                              {/* <Button
                                 aria-label="toggle password visibility"
                                 onClick={handleApplyDiscount}
                               >
                                 APLICAR
-                              </Button>
+                              </Button> */}
                             </InputAdornment>
                           }
                         />
